@@ -1,9 +1,26 @@
+
+
+3 Befehle ausgeführt, 2 Dateien erstellt, datei angesehen
+3 Befehle ausgeführt, 2 Dateien erstellt, datei angesehen
+Claudes Antwort konnte nicht vollständig generiert werden
+
+
+Sie haben bis 13:00 keine kostenlosen Nachrichten mehr
+Upgrade
+
+
+
+Claude ist eine KI und kann Fehler machen. Bitte überprüfe die Antworten.
+Hangboard 6wochen plan · HTML
+Kopieren
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <title>6-Wochen Hangboard Plan – Beastmaker 1000</title>
 <style>
+  * { box-sizing: border-box; }
   body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 24px; color: #222; background: #fff; }
   h1 { color: #1a1a2e; border-bottom: 3px solid #e05c1a; padding-bottom: 10px; }
   h2 { color: #e05c1a; margin-top: 36px; }
@@ -11,13 +28,13 @@
   .badge { display: inline-block; background: #e05c1a; color: white; border-radius: 4px; padding: 2px 10px; font-size: 0.85em; margin-left: 8px; vertical-align: middle; }
   table { border-collapse: collapse; width: 100%; margin: 12px 0 24px 0; }
   th { background: #1a1a2e; color: white; padding: 8px 12px; text-align: left; }
-  td { padding: 7px 12px; border-bottom: 1px solid #e0e0e0; }
-  tr:nth-child(even) { background: #f7f7f7; }
+  td { padding: 7px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: middle; }
+  tr:nth-child(even) td { background: #f7f7f7; }
   .week-block { border: 1px solid #ddd; border-radius: 8px; padding: 18px 22px; margin: 18px 0; background: #fafafa; }
   .week-block h3 { margin-top: 0; }
   .tip { background: #fff3e0; border-left: 4px solid #e05c1a; padding: 10px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
   .session { margin: 10px 0; padding: 10px 16px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; }
-  .session-title { font-weight: bold; color: #1a1a2e; }
+  .session-title { font-weight: bold; color: #1a1a2e; margin-bottom: 6px; }
   .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.78em; font-weight: bold; margin-right: 4px; }
   .tag-ausdauer { background: #e3f2fd; color: #1565c0; }
   .tag-kraft { background: #fce4ec; color: #c62828; }
@@ -26,19 +43,56 @@
   .progress { background: #e0e0e0; border-radius: 4px; height: 8px; margin: 4px 0 10px 0; }
   .progress-bar { background: #e05c1a; border-radius: 4px; height: 8px; }
   footer { margin-top: 48px; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 16px; }
+ 
+  /* Editable fields */
+  .field { display: inline-block; border: none; border-bottom: 2px dashed #e05c1a; background: transparent; font-family: Arial, sans-serif; font-size: 1em; color: #1a1a2e; min-width: 60px; padding: 1px 4px; text-align: center; outline: none; transition: border-color 0.2s, background 0.2s; }
+  .field:focus { border-bottom: 2px solid #1a1a2e; background: #fff8f0; border-radius: 4px 4px 0 0; }
+  .field::placeholder { color: #bbb; font-style: italic; }
+ 
+  /* Training log */
+  .log-section { margin-top: 10px; }
+  .log-entry { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
+  .log-entry label { font-size: 0.85em; color: #555; min-width: 90px; }
+  .log-entry .field { min-width: 50px; }
+  .log-note { width: 100%; margin-top: 4px; border: 1px solid #ddd; border-radius: 6px; padding: 6px 10px; font-size: 0.88em; font-family: Arial, sans-serif; resize: vertical; min-height: 36px; color: #333; }
+  .log-note:focus { outline: none; border-color: #e05c1a; }
+  .log-toggle { font-size: 0.8em; color: #e05c1a; cursor: pointer; border: none; background: none; padding: 0; margin-top: 8px; text-decoration: underline; }
+  .log-toggle:hover { color: #1a1a2e; }
+  .log-body { display: none; margin-top: 8px; }
+  .log-body.open { display: block; }
+  .done-checkbox { accent-color: #e05c1a; width: 16px; height: 16px; cursor: pointer; margin-right: 6px; }
+  .done-label { font-size: 0.82em; color: #555; }
+  .session.done { opacity: 0.6; }
+  .session.done .session-title::after { content: ' ✅'; }
+ 
+  /* Benchmark table inputs */
+  .bench-input { border: none; border-bottom: 2px dashed #e05c1a; background: transparent; font-size: 0.95em; font-family: Arial, sans-serif; color: #1a1a2e; width: 120px; padding: 2px 4px; outline: none; text-align: center; }
+  .bench-input:focus { background: #fff8f0; border-bottom: 2px solid #1a1a2e; }
+ 
+  /* Save indicator */
+  #save-toast { position: fixed; bottom: 24px; right: 24px; background: #1a1a2e; color: white; padding: 8px 18px; border-radius: 20px; font-size: 0.85em; opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+  #save-toast.show { opacity: 1; }
+ 
+  /* Reset button */
+  .reset-btn { font-size: 0.78em; color: #aaa; border: 1px solid #ddd; background: none; border-radius: 4px; padding: 2px 8px; cursor: pointer; margin-left: 12px; }
+  .reset-btn:hover { color: #e05c1a; border-color: #e05c1a; }
 </style>
 </head>
 <body>
-
-<h1>🧗 6-Wochen Hangboard Plan <span class="badge">Beastmaker 1000</span></h1>
+ 
+<div id="save-toast">💾 Gespeichert</div>
+ 
+<h1>🧗 6-Wochen Hangboard Plan <span class="badge">Beastmaker 1000</span>
+  <button class="reset-btn" onclick="resetAll()">↺ Alles zurücksetzen</button>
+</h1>
 <p><strong>Niveau:</strong> 6b/c &nbsp;|&nbsp; <strong>Ziel:</strong> Fingerausdauer &amp; Grundkraft verbessern &nbsp;|&nbsp; <strong>Frequenz:</strong> 3×/Woche &nbsp;|&nbsp; <strong>Verletzung:</strong> Knie (nicht belastbar)</p>
-
-<div class="tip">⚡ <strong>Bevor du anfängst:</strong> Ermittle deinen Max-Hang auf der 20mm-Leiste (7 Sek., Half-Crimp, Körpergewicht). Das ist die Basis für alle Intensitätsangaben.</div>
-
----
-
+ 
+<div class="tip">⚡ <strong>Bevor du anfängst:</strong> Trag dein Körpergewicht und deinen Max-Hang-Wert ein — alle Felder mit gestricheltem Strich sind editierbar und werden automatisch gespeichert.<br><br>
+  Körpergewicht: <input class="field" id="bw" placeholder="70" size="4"> kg &nbsp;|&nbsp;
+  Max-Hang 20mm (7s): <input class="field" id="maxhang" placeholder="100" size="4"> % KG
+</div>
+ 
 <h2>📋 Aufbau jeder Session</h2>
-
 <table>
   <tr><th>Phase</th><th>Inhalt</th><th>Dauer</th></tr>
   <tr><td>Aufwärmen</td><td>10 Min. Allgemein (Hampelmann, Schulterrotationen, Armkreisen) + 2–3 lockere Hänge auf den Jugs/50mm</td><td>15 Min.</td></tr>
@@ -47,97 +101,169 @@
   <tr><td>Block B</td><td>Ausdauer – Repeater auf 45mm (→ 30mm ab Woche 4)</td><td>20–30 Min.</td></tr>
   <tr><td>Block C</td><td>Antagonisten + Core</td><td>10–15 Min.</td></tr>
 </table>
-
+ 
 <div class="tip">💡 <strong>Reihenfolge einhalten:</strong> Kraft immer VOR Ausdauer. Nie zwei Sessions an aufeinanderfolgenden Tagen.</div>
-
----
-
+ 
 <h2>📅 Wochenprogramm (Beispiel)</h2>
 <table>
   <tr><th>Mo</th><th>Di</th><th>Mi</th><th>Do</th><th>Fr</th><th>Sa/So</th></tr>
   <tr><td>✅ Session</td><td>❌ Pause</td><td>✅ Session</td><td>❌ Pause</td><td>✅ Session</td><td>❌ Pause</td></tr>
 </table>
-
----
-
+ 
 <h2>📈 6-Wochen Progression</h2>
-
+ 
+<!-- WOCHE 1-2 -->
 <div class="week-block">
   <h3>Woche 1–2 <span class="badge" style="background:#555">Eingewöhnung</span></h3>
   <div class="progress"><div class="progress-bar" style="width:25%"></div></div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w1_a">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w1_a" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A – Max-Hang 20mm</div>
     <p>3 Sätze × 7 Sek. Hang &nbsp;|&nbsp; Pause: <strong>3–5 Min.</strong> zwischen Sätzen<br>
-    Griffposition: Half-Crimp &nbsp;|&nbsp; Intensität: Körpergewicht (kein Zusatzgewicht noch)<br>
+    Griffposition: Half-Crimp &nbsp;|&nbsp; Intensität: Körpergewicht<br>
     Ziel: saubere Form, Schultern aktiv, Körperspannung</p>
+    <button class="log-toggle" onclick="toggleLog('log_w1_a')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w1_a">
+      <div class="log-entry">
+        <label>Datum:</label><input class="field" data-id="d_w1_a_date" placeholder="TT.MM" size="6">
+        <label>Zusatzgewicht:</label><input class="field" data-id="d_w1_a_kg" placeholder="0" size="4"> kg
+        <label>Sätze:</label><input class="field" data-id="d_w1_a_sets" placeholder="3" size="3">
+      </div>
+      <textarea class="log-note" data-id="d_w1_a_note" placeholder="Notizen (Gefühl, Probleme, etc.)…" rows="2"></textarea>
+    </div>
   </div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w1_b">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w1_b" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B – 7/3 Repeater auf 45mm</div>
     <p>6 Sätze × 6 Wiederholungen &nbsp;|&nbsp; Pause: <strong>2 Min.</strong> zwischen Sätzen<br>
     Intensität: Bodyweight &nbsp;|&nbsp; Griffposition: Half-Crimp<br>
     Gefühl: leichtes Pumpen am Ende, du könntest noch einen Satz machen</p>
+    <button class="log-toggle" onclick="toggleLog('log_w1_b')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w1_b">
+      <div class="log-entry">
+        <label>Datum:</label><input class="field" data-id="d_w1_b_date" placeholder="TT.MM" size="6">
+        <label>Sätze geschafft:</label><input class="field" data-id="d_w1_b_sets" placeholder="6" size="3">
+        <label>Pumplevel (1–10):</label><input class="field" data-id="d_w1_b_pump" placeholder="5" size="3">
+      </div>
+      <textarea class="log-note" data-id="d_w1_b_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w1_c">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w1_c" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
     <p>Fingerstrecker: 3 × 15 mit Theraband &nbsp;|&nbsp; Schulter: 3 × 12 Aussenrotationen<br>
     Core: 3 × 30 Sek. Plank &nbsp;|&nbsp; Optional: Hollow Body 3 × 20 Sek.</p>
+    <button class="log-toggle" onclick="toggleLog('log_w1_c')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w1_c">
+      <textarea class="log-note" data-id="d_w1_c_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
 </div>
-
+ 
+<!-- WOCHE 3-4 -->
 <div class="week-block">
   <h3>Woche 3–4 <span class="badge" style="background:#e05c1a">Aufbau</span></h3>
   <div class="progress"><div class="progress-bar" style="width:55%"></div></div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w3_a">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w3_a" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A – Max-Hang 20mm</div>
     <p>4 Sätze × 7 Sek. Hang &nbsp;|&nbsp; Pause: <strong>3–4 Min.</strong><br>
     Intensität: Wenn Bodyweight easy ist → +2–5 kg Zusatz testen<br>
     Ziel: echten Maximalreiz setzen, letzter Satz knapp am Limit</p>
+    <button class="log-toggle" onclick="toggleLog('log_w3_a')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w3_a">
+      <div class="log-entry">
+        <label>Datum:</label><input class="field" data-id="d_w3_a_date" placeholder="TT.MM" size="6">
+        <label>Zusatzgewicht:</label><input class="field" data-id="d_w3_a_kg" placeholder="0" size="4"> kg
+        <label>Sätze:</label><input class="field" data-id="d_w3_a_sets" placeholder="4" size="3">
+      </div>
+      <textarea class="log-note" data-id="d_w3_a_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w3_b">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w3_b" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B – 7/3 Repeater</div>
     <p><strong>Woche 3:</strong> 8 Sätze × 6 Wdh. auf 45mm &nbsp;|&nbsp; Pause: <strong>90 Sek.</strong><br>
-    <strong>Woche 4:</strong> Wechsel auf <strong>30mm</strong> &nbsp;|&nbsp; 6 Sätze × 6 Wdh. &nbsp;|&nbsp; Pause: <strong>2 Min.</strong><br>
-    Intensität: Bodyweight – auf 30mm wirst du mehr spüren!</p>
+    <strong>Woche 4:</strong> Wechsel auf <strong>30mm</strong> &nbsp;|&nbsp; 6 Sätze × 6 Wdh. &nbsp;|&nbsp; Pause: <strong>2 Min.</strong></p>
+    <button class="log-toggle" onclick="toggleLog('log_w3_b')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w3_b">
+      <div class="log-entry">
+        <label>Datum:</label><input class="field" data-id="d_w3_b_date" placeholder="TT.MM" size="6">
+        <label>Leiste:</label><input class="field" data-id="d_w3_b_edge" placeholder="45mm" size="6">
+        <label>Sätze:</label><input class="field" data-id="d_w3_b_sets" placeholder="8" size="3">
+        <label>Pumplevel:</label><input class="field" data-id="d_w3_b_pump" placeholder="5" size="3">
+      </div>
+      <textarea class="log-note" data-id="d_w3_b_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w3_c">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w3_c" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
-    <p>Fingerstrecker: 3 × 20 &nbsp;|&nbsp; Schulter: 3 × 15 Aussenrotationen + 3 × 12 Face Pulls (Theraband)<br>
-    Core: 4 × 30 Sek. Plank &nbsp;|&nbsp; 3 × 10 Leg Raises (liegend)</p>
+    <p>Fingerstrecker: 3 × 20 &nbsp;|&nbsp; Schulter: 3 × 15 Aussenrotationen + 3 × 12 Face Pulls<br>
+    Core: 4 × 30 Sek. Plank &nbsp;|&nbsp; 3 × 10 Leg Raises</p>
+    <button class="log-toggle" onclick="toggleLog('log_w3_c')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w3_c">
+      <textarea class="log-note" data-id="d_w3_c_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
 </div>
-
+ 
+<!-- WOCHE 5-6 -->
 <div class="week-block">
   <h3>Woche 5–6 <span class="badge" style="background:#1a1a2e">Peak</span></h3>
   <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w5_a">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w5_a" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A – Max-Hang 20mm</div>
     <p>4–5 Sätze × 7 Sek. &nbsp;|&nbsp; Pause: <strong>4–5 Min.</strong><br>
-    Intensität: Mit Zusatzgewicht (5–10 kg, je nach Stärke)<br>
-    <strong>Woche 6 letztes Training:</strong> Benchmark-Test! Wie viel % Körpergewicht schaffst du?</p>
+    Intensität: Mit Zusatzgewicht (5–10 kg)<br>
+    <strong>Woche 6 letztes Training:</strong> Benchmark-Test!</p>
+    <button class="log-toggle" onclick="toggleLog('log_w5_a')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w5_a">
+      <div class="log-entry">
+        <label>Datum:</label><input class="field" data-id="d_w5_a_date" placeholder="TT.MM" size="6">
+        <label>Zusatzgewicht:</label><input class="field" data-id="d_w5_a_kg" placeholder="0" size="4"> kg
+        <label>Sätze:</label><input class="field" data-id="d_w5_a_sets" placeholder="5" size="3">
+      </div>
+      <textarea class="log-note" data-id="d_w5_a_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w5_b">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w5_b" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B – 7/3 Repeater auf 30mm</div>
     <p>10 Sätze × 6 Wdh. &nbsp;|&nbsp; Pause: <strong>60–90 Sek.</strong><br>
-    Wenn 10 Sätze × 60 Sek. Pause problemlos → bereit für 20mm oder härtere Leiste!</p>
+    Wenn 10 Sätze × 60 Sek. Pause problemlos → bereit für die nächste Stufe!</p>
+    <button class="log-toggle" onclick="toggleLog('log_w5_b')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w5_b">
+      <div class="log-entry">
+        <label>Datum:</label><input class="field" data-id="d_w5_b_date" placeholder="TT.MM" size="6">
+        <label>Sätze:</label><input class="field" data-id="d_w5_b_sets" placeholder="10" size="3">
+        <label>Pumplevel:</label><input class="field" data-id="d_w5_b_pump" placeholder="5" size="3">
+      </div>
+      <textarea class="log-note" data-id="d_w5_b_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
-
-  <div class="session">
+ 
+  <div class="session" id="s_w5_c">
+    <label><input type="checkbox" class="done-checkbox" data-id="s_w5_c" onchange="toggleDone(this)"> <span class="done-label">Erledigt</span></label>
     <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
-    <p>Fingerstrecker: 3 × 20 &nbsp;|&nbsp; Schulter: 3 × 15 Aussenrotationen + Face Pulls<br>
+    <p>Fingerstrecker: 3 × 20 &nbsp;|&nbsp; Schulter: 3 × 15 + Face Pulls<br>
     Core: 4 × 40 Sek. Plank &nbsp;|&nbsp; 3 × 12 Leg Raises &nbsp;|&nbsp; 3 × 20 Sek. Hollow Body</p>
+    <button class="log-toggle" onclick="toggleLog('log_w5_c')">▸ Trainingsnotiz</button>
+    <div class="log-body" id="log_w5_c">
+      <textarea class="log-note" data-id="d_w5_c_note" placeholder="Notizen…" rows="2"></textarea>
+    </div>
   </div>
 </div>
-
----
-
+ 
 <h2>🎯 Übersichtstabelle</h2>
 <table>
   <tr><th>Woche</th><th>Max-Hang (Sätze)</th><th>Ausdauer-Leiste</th><th>Ausdauer-Sätze</th><th>Pause zw. Sätzen</th></tr>
@@ -148,33 +274,160 @@
   <tr><td>5</td><td>4–5 Sätze, +Gewicht</td><td>30mm</td><td>8</td><td>90 Sek.</td></tr>
   <tr><td>6</td><td>5 Sätze + Benchmark-Test</td><td>30mm</td><td>10</td><td>60 Sek.</td></tr>
 </table>
-
----
-
+ 
 <h2>⚠️ Wichtige Hinweise</h2>
 <ul>
   <li><strong>Schmerz = Stop.</strong> Fingersehnenschmerz sofort abbrechen und 1 Woche Pause.</li>
   <li><strong>Aufwärmen nie überspringen</strong> – kalte Sehnen sind verletzungsanfällig.</li>
-  <li><strong>Half-Crimp</strong> ist die sicherste Griffposition für Training – kein Full-Crimp ohne Eingewöhnung.</li>
+  <li><strong>Half-Crimp</strong> ist die sicherste Griffposition – kein Full-Crimp ohne Eingewöhnung.</li>
   <li><strong>Hydration:</strong> Sehnen brauchen viel Wasser – mindestens 2L täglich.</li>
   <li><strong>App-Tipp:</strong> Crimpd oder die offizielle Beastmaker App für Timing nutzen.</li>
 </ul>
-
----
-
+ 
 <h2>📊 Benchmark vor &amp; nach</h2>
 <table>
-  <tr><th>Test</th><th>Woche 1 (Baseline)</th><th>Woche 6 (Ziel)</th></tr>
-  <tr><td>Max-Hang 20mm (7 Sek.)</td><td>___ % Körpergewicht</td><td>___ % Körpergewicht</td></tr>
-  <tr><td>Repeater 45mm bis Erschöpfung</td><td>___ Sätze</td><td>–</td></tr>
-  <tr><td>Repeater 30mm bis Erschöpfung</td><td>–</td><td>___ Sätze</td></tr>
+  <tr><th>Test</th><th>Woche 1 (Baseline)</th><th>Woche 6 (Ergebnis)</th><th>Differenz</th></tr>
+  <tr>
+    <td>Max-Hang 20mm (% KG)</td>
+    <td><input class="bench-input" data-id="bench_mh_pre" placeholder="z.B. 100%"></td>
+    <td><input class="bench-input" data-id="bench_mh_post" placeholder="z.B. 115%"></td>
+    <td id="bench_mh_diff" style="color:#e05c1a; font-weight:bold;">–</td>
+  </tr>
+  <tr>
+    <td>Repeater 45mm (Sätze)</td>
+    <td><input class="bench-input" data-id="bench_45_pre" placeholder="z.B. 6"></td>
+    <td><input class="bench-input" data-id="bench_45_post" placeholder="–"></td>
+    <td id="bench_45_diff" style="color:#e05c1a; font-weight:bold;">–</td>
+  </tr>
+  <tr>
+    <td>Repeater 30mm (Sätze)</td>
+    <td><input class="bench-input" data-id="bench_30_pre" placeholder="–"></td>
+    <td><input class="bench-input" data-id="bench_30_post" placeholder="z.B. 10"></td>
+    <td id="bench_30_diff" style="color:#e05c1a; font-weight:bold;">–</td>
+  </tr>
 </table>
-
+ 
 <footer>
   Erstellt für Beastmaker 1000 | Niveau 6b/c | 3×/Woche | Knieschonend<br>
-  Quellen: Lattice Training, Beastmaker Training Guidelines
+  Daten werden lokal in deinem Browser gespeichert (localStorage).
 </footer>
-
+ 
+<script>
+  const STORE = 'hb6w_data';
+ 
+  function getData() {
+    try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e) { return {}; }
+  }
+  function saveData(data) {
+    localStorage.setItem(STORE, JSON.stringify(data));
+    showToast();
+  }
+  function showToast() {
+    const t = document.getElementById('save-toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1500);
+  }
+ 
+  function loadAll() {
+    const data = getData();
+    // text inputs & textareas
+    document.querySelectorAll('[data-id]').forEach(el => {
+      const key = el.getAttribute('data-id');
+      if (data[key] !== undefined) {
+        if (el.type === 'checkbox') {
+          el.checked = data[key];
+          if (data[key]) {
+            const session = document.getElementById(key);
+            if (session) session.classList.add('done');
+          }
+        } else {
+          el.value = data[key];
+        }
+      }
+    });
+    // special fields
+    ['bw','maxhang'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && data[id] !== undefined) el.value = data[id];
+    });
+    updateDiffs();
+  }
+ 
+  function autosave(el) {
+    const key = el.getAttribute('data-id') || el.id;
+    if (!key) return;
+    const data = getData();
+    data[key] = el.type === 'checkbox' ? el.checked : el.value;
+    saveData(data);
+    updateDiffs();
+  }
+ 
+  function toggleDone(cb) {
+    const id = cb.getAttribute('data-id');
+    const session = document.getElementById(id);
+    if (session) session.classList.toggle('done', cb.checked);
+    autosave(cb);
+  }
+ 
+  function toggleLog(id) {
+    const el = document.getElementById(id);
+    const btn = el.previousElementSibling;
+    el.classList.toggle('open');
+    btn.textContent = el.classList.contains('open') ? '▾ Trainingsnotiz' : '▸ Trainingsnotiz';
+  }
+ 
+  function parseNum(val) {
+    const n = parseFloat(val.replace('%','').trim());
+    return isNaN(n) ? null : n;
+  }
+ 
+  function updateDiffs() {
+    const pairs = [
+      ['bench_mh_pre','bench_mh_post','bench_mh_diff','%'],
+      ['bench_45_pre','bench_45_post','bench_45_diff',' Sätze'],
+      ['bench_30_pre','bench_30_post','bench_30_diff',' Sätze'],
+    ];
+    pairs.forEach(([pre, post, diff, unit]) => {
+      const preEl = document.querySelector(`[data-id="${pre}"]`);
+      const postEl = document.querySelector(`[data-id="${post}"]`);
+      const diffEl = document.getElementById(diff);
+      if (!preEl || !postEl || !diffEl) return;
+      const a = parseNum(preEl.value), b = parseNum(postEl.value);
+      if (a !== null && b !== null) {
+        const d = b - a;
+        diffEl.textContent = (d >= 0 ? '+' : '') + d.toFixed(1) + unit;
+        diffEl.style.color = d >= 0 ? '#2e7d32' : '#c62828';
+      } else {
+        diffEl.textContent = '–';
+        diffEl.style.color = '#e05c1a';
+      }
+    });
+  }
+ 
+  function resetAll() {
+    if (confirm('Alle eingetragenen Werte löschen?')) {
+      localStorage.removeItem(STORE);
+      location.reload();
+    }
+  }
+ 
+  // Attach listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    loadAll();
+    document.querySelectorAll('[data-id]').forEach(el => {
+      const ev = (el.tagName === 'TEXTAREA' || el.type === 'text' || el.type === undefined) ? 'input' : 'change';
+      el.addEventListener(ev, () => autosave(el));
+    });
+    ['bw','maxhang'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', () => {
+        const data = getData();
+        data[id] = el.value;
+        saveData(data);
+      });
+    });
+  });
+</script>
 </body>
 </html>
-
+ 
