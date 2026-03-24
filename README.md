@@ -1,1 +1,179 @@
-# book1
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>6-Wochen Hangboard Plan – Beastmaker 1000</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 24px; color: #222; background: #fff; }
+  h1 { color: #1a1a2e; border-bottom: 3px solid #e05c1a; padding-bottom: 10px; }
+  h2 { color: #e05c1a; margin-top: 36px; }
+  h3 { color: #333; margin-top: 24px; }
+  .badge { display: inline-block; background: #e05c1a; color: white; border-radius: 4px; padding: 2px 10px; font-size: 0.85em; margin-left: 8px; vertical-align: middle; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0 24px 0; }
+  th { background: #1a1a2e; color: white; padding: 8px 12px; text-align: left; }
+  td { padding: 7px 12px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f7f7f7; }
+  .week-block { border: 1px solid #ddd; border-radius: 8px; padding: 18px 22px; margin: 18px 0; background: #fafafa; }
+  .week-block h3 { margin-top: 0; }
+  .tip { background: #fff3e0; border-left: 4px solid #e05c1a; padding: 10px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .session { margin: 10px 0; padding: 10px 16px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; }
+  .session-title { font-weight: bold; color: #1a1a2e; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.78em; font-weight: bold; margin-right: 4px; }
+  .tag-ausdauer { background: #e3f2fd; color: #1565c0; }
+  .tag-kraft { background: #fce4ec; color: #c62828; }
+  .tag-antag { background: #e8f5e9; color: #2e7d32; }
+  .tag-core { background: #f3e5f5; color: #6a1b9a; }
+  .progress { background: #e0e0e0; border-radius: 4px; height: 8px; margin: 4px 0 10px 0; }
+  .progress-bar { background: #e05c1a; border-radius: 4px; height: 8px; }
+  footer { margin-top: 48px; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 16px; }
+</style>
+</head>
+<body>
+
+<h1>🧗 6-Wochen Hangboard Plan <span class="badge">Beastmaker 1000</span></h1>
+<p><strong>Niveau:</strong> 6b/c &nbsp;|&nbsp; <strong>Ziel:</strong> Fingerausdauer &amp; Grundkraft verbessern &nbsp;|&nbsp; <strong>Frequenz:</strong> 3×/Woche &nbsp;|&nbsp; <strong>Verletzung:</strong> Knie (nicht belastbar)</p>
+
+<div class="tip">⚡ <strong>Bevor du anfängst:</strong> Ermittle deinen Max-Hang auf der 20mm-Leiste (7 Sek., Half-Crimp, Körpergewicht). Das ist die Basis für alle Intensitätsangaben.</div>
+
+---
+
+<h2>📋 Aufbau jeder Session</h2>
+
+<table>
+  <tr><th>Phase</th><th>Inhalt</th><th>Dauer</th></tr>
+  <tr><td>Aufwärmen</td><td>10 Min. Allgemein (Hampelmann, Schulterrotationen, Armkreisen) + 2–3 lockere Hänge auf den Jugs/50mm</td><td>15 Min.</td></tr>
+  <tr><td>Block A</td><td>Maximalkraft – Max-Hang auf 20mm</td><td>15 Min.</td></tr>
+  <tr><td>Pause</td><td>5 Min. Pause zwischen Block A und B</td><td>5 Min.</td></tr>
+  <tr><td>Block B</td><td>Ausdauer – Repeater auf 45mm (→ 30mm ab Woche 4)</td><td>20–30 Min.</td></tr>
+  <tr><td>Block C</td><td>Antagonisten + Core</td><td>10–15 Min.</td></tr>
+</table>
+
+<div class="tip">💡 <strong>Reihenfolge einhalten:</strong> Kraft immer VOR Ausdauer. Nie zwei Sessions an aufeinanderfolgenden Tagen.</div>
+
+---
+
+<h2>📅 Wochenprogramm (Beispiel)</h2>
+<table>
+  <tr><th>Mo</th><th>Di</th><th>Mi</th><th>Do</th><th>Fr</th><th>Sa/So</th></tr>
+  <tr><td>✅ Session</td><td>❌ Pause</td><td>✅ Session</td><td>❌ Pause</td><td>✅ Session</td><td>❌ Pause</td></tr>
+</table>
+
+---
+
+<h2>📈 6-Wochen Progression</h2>
+
+<div class="week-block">
+  <h3>Woche 1–2 <span class="badge" style="background:#555">Eingewöhnung</span></h3>
+  <div class="progress"><div class="progress-bar" style="width:25%"></div></div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A – Max-Hang 20mm</div>
+    <p>3 Sätze × 7 Sek. Hang &nbsp;|&nbsp; Pause: <strong>3–5 Min.</strong> zwischen Sätzen<br>
+    Griffposition: Half-Crimp &nbsp;|&nbsp; Intensität: Körpergewicht (kein Zusatzgewicht noch)<br>
+    Ziel: saubere Form, Schultern aktiv, Körperspannung</p>
+  </div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B – 7/3 Repeater auf 45mm</div>
+    <p>6 Sätze × 6 Wiederholungen &nbsp;|&nbsp; Pause: <strong>2 Min.</strong> zwischen Sätzen<br>
+    Intensität: Bodyweight &nbsp;|&nbsp; Griffposition: Half-Crimp<br>
+    Gefühl: leichtes Pumpen am Ende, du könntest noch einen Satz machen</p>
+  </div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
+    <p>Fingerstrecker: 3 × 15 mit Theraband &nbsp;|&nbsp; Schulter: 3 × 12 Aussenrotationen<br>
+    Core: 3 × 30 Sek. Plank &nbsp;|&nbsp; Optional: Hollow Body 3 × 20 Sek.</p>
+  </div>
+</div>
+
+<div class="week-block">
+  <h3>Woche 3–4 <span class="badge" style="background:#e05c1a">Aufbau</span></h3>
+  <div class="progress"><div class="progress-bar" style="width:55%"></div></div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A – Max-Hang 20mm</div>
+    <p>4 Sätze × 7 Sek. Hang &nbsp;|&nbsp; Pause: <strong>3–4 Min.</strong><br>
+    Intensität: Wenn Bodyweight easy ist → +2–5 kg Zusatz testen<br>
+    Ziel: echten Maximalreiz setzen, letzter Satz knapp am Limit</p>
+  </div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B – 7/3 Repeater</div>
+    <p><strong>Woche 3:</strong> 8 Sätze × 6 Wdh. auf 45mm &nbsp;|&nbsp; Pause: <strong>90 Sek.</strong><br>
+    <strong>Woche 4:</strong> Wechsel auf <strong>30mm</strong> &nbsp;|&nbsp; 6 Sätze × 6 Wdh. &nbsp;|&nbsp; Pause: <strong>2 Min.</strong><br>
+    Intensität: Bodyweight – auf 30mm wirst du mehr spüren!</p>
+  </div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
+    <p>Fingerstrecker: 3 × 20 &nbsp;|&nbsp; Schulter: 3 × 15 Aussenrotationen + 3 × 12 Face Pulls (Theraband)<br>
+    Core: 4 × 30 Sek. Plank &nbsp;|&nbsp; 3 × 10 Leg Raises (liegend)</p>
+  </div>
+</div>
+
+<div class="week-block">
+  <h3>Woche 5–6 <span class="badge" style="background:#1a1a2e">Peak</span></h3>
+  <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A – Max-Hang 20mm</div>
+    <p>4–5 Sätze × 7 Sek. &nbsp;|&nbsp; Pause: <strong>4–5 Min.</strong><br>
+    Intensität: Mit Zusatzgewicht (5–10 kg, je nach Stärke)<br>
+    <strong>Woche 6 letztes Training:</strong> Benchmark-Test! Wie viel % Körpergewicht schaffst du?</p>
+  </div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B – 7/3 Repeater auf 30mm</div>
+    <p>10 Sätze × 6 Wdh. &nbsp;|&nbsp; Pause: <strong>60–90 Sek.</strong><br>
+    Wenn 10 Sätze × 60 Sek. Pause problemlos → bereit für 20mm oder härtere Leiste!</p>
+  </div>
+
+  <div class="session">
+    <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
+    <p>Fingerstrecker: 3 × 20 &nbsp;|&nbsp; Schulter: 3 × 15 Aussenrotationen + Face Pulls<br>
+    Core: 4 × 40 Sek. Plank &nbsp;|&nbsp; 3 × 12 Leg Raises &nbsp;|&nbsp; 3 × 20 Sek. Hollow Body</p>
+  </div>
+</div>
+
+---
+
+<h2>🎯 Übersichtstabelle</h2>
+<table>
+  <tr><th>Woche</th><th>Max-Hang (Sätze)</th><th>Ausdauer-Leiste</th><th>Ausdauer-Sätze</th><th>Pause zw. Sätzen</th></tr>
+  <tr><td>1</td><td>3 Sätze, BW</td><td>45mm</td><td>6</td><td>2 Min.</td></tr>
+  <tr><td>2</td><td>3 Sätze, BW</td><td>45mm</td><td>6</td><td>2 Min.</td></tr>
+  <tr><td>3</td><td>4 Sätze, +Gewicht testen</td><td>45mm</td><td>8</td><td>90 Sek.</td></tr>
+  <tr><td>4</td><td>4 Sätze, +Gewicht</td><td><strong>30mm</strong></td><td>6</td><td>2 Min.</td></tr>
+  <tr><td>5</td><td>4–5 Sätze, +Gewicht</td><td>30mm</td><td>8</td><td>90 Sek.</td></tr>
+  <tr><td>6</td><td>5 Sätze + Benchmark-Test</td><td>30mm</td><td>10</td><td>60 Sek.</td></tr>
+</table>
+
+---
+
+<h2>⚠️ Wichtige Hinweise</h2>
+<ul>
+  <li><strong>Schmerz = Stop.</strong> Fingersehnenschmerz sofort abbrechen und 1 Woche Pause.</li>
+  <li><strong>Aufwärmen nie überspringen</strong> – kalte Sehnen sind verletzungsanfällig.</li>
+  <li><strong>Half-Crimp</strong> ist die sicherste Griffposition für Training – kein Full-Crimp ohne Eingewöhnung.</li>
+  <li><strong>Hydration:</strong> Sehnen brauchen viel Wasser – mindestens 2L täglich.</li>
+  <li><strong>App-Tipp:</strong> Crimpd oder die offizielle Beastmaker App für Timing nutzen.</li>
+</ul>
+
+---
+
+<h2>📊 Benchmark vor &amp; nach</h2>
+<table>
+  <tr><th>Test</th><th>Woche 1 (Baseline)</th><th>Woche 6 (Ziel)</th></tr>
+  <tr><td>Max-Hang 20mm (7 Sek.)</td><td>___ % Körpergewicht</td><td>___ % Körpergewicht</td></tr>
+  <tr><td>Repeater 45mm bis Erschöpfung</td><td>___ Sätze</td><td>–</td></tr>
+  <tr><td>Repeater 30mm bis Erschöpfung</td><td>–</td><td>___ Sätze</td></tr>
+</table>
+
+<footer>
+  Erstellt für Beastmaker 1000 | Niveau 6b/c | 3×/Woche | Knieschonend<br>
+  Quellen: Lattice Training, Beastmaker Training Guidelines
+</footer>
+
+</body>
+</html>
