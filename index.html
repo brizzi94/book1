@@ -92,8 +92,9 @@
   <h3>Woche 1-2 <span class="badge" style="background:#555">Eingewoehnung</span></h3>
   <div class="progress"><div class="progress-bar" style="width:25%"></div></div>
   <div class="session">
-    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm</div>
-    <p>3 Saetze x 7 Sek. | Pause: <strong>3-5 Min.</strong> | Half-Crimp | <strong>+5 kg</strong> (dein aktuelles Max)</p>
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm + Pull-ups</div>
+    <p>Max-Hang: 3 Saetze x 7 Sek. | Pause: <strong>3-5 Min.</strong> | Half-Crimp | <strong>+5 kg</strong><br>
+    Pull-up 2RM: 3 Saetze x 2–3 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+5 kg</strong> Zusatz</p>
   </div>
   <div class="session">
     <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B - 7/3 Repeater auf 45mm</div>
@@ -104,13 +105,13 @@
     <p>Fingerstrecker 3x15 | Schulter 3x12 Aussenrotationen | Plank 3x30 Sek.</p>
   </div>
   <table class="log-table" style="margin-top:14px;">
-    <tr><th style="width:70px">Session</th><th style="width:130px">Datum</th><th style="width:80px">Zusatz kg</th><th style="width:80px">Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
-    <tr><td>W1 S1</td><td><input type="date" id="w1s1_d"></td><td><input type="number" id="w1s1_k" placeholder="kg"></td><td><input type="number" id="w1s1_s" placeholder="#"></td><td><input type="text" id="w1s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s1_done" onclick="toggleDone('w1s1_done')">&#10003;</button></td></tr>
-    <tr><td>W1 S2</td><td><input type="date" id="w1s2_d"></td><td><input type="number" id="w1s2_k" placeholder="kg"></td><td><input type="number" id="w1s2_s" placeholder="#"></td><td><input type="text" id="w1s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s2_done" onclick="toggleDone('w1s2_done')">&#10003;</button></td></tr>
-    <tr><td>W1 S3</td><td><input type="date" id="w1s3_d"></td><td><input type="number" id="w1s3_k" placeholder="kg"></td><td><input type="number" id="w1s3_s" placeholder="#"></td><td><input type="text" id="w1s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s3_done" onclick="toggleDone('w1s3_done')">&#10003;</button></td></tr>
-    <tr><td>W2 S1</td><td><input type="date" id="w2s1_d"></td><td><input type="number" id="w2s1_k" placeholder="kg"></td><td><input type="number" id="w2s1_s" placeholder="#"></td><td><input type="text" id="w2s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s1_done" onclick="toggleDone('w2s1_done')">&#10003;</button></td></tr>
-    <tr><td>W2 S2</td><td><input type="date" id="w2s2_d"></td><td><input type="number" id="w2s2_k" placeholder="kg"></td><td><input type="number" id="w2s2_s" placeholder="#"></td><td><input type="text" id="w2s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s2_done" onclick="toggleDone('w2s2_done')">&#10003;</button></td></tr>
-    <tr><td>W2 S3</td><td><input type="date" id="w2s3_d"></td><td><input type="number" id="w2s3_k" placeholder="kg"></td><td><input type="number" id="w2s3_s" placeholder="#"></td><td><input type="text" id="w2s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s3_done" onclick="toggleDone('w2s3_done')">&#10003;</button></td></tr>
+    <tr><th style="width:60px">Session</th><th style="width:110px">Datum</th><th style="width:90px">Hang +kg</th><th style="width:90px">PU +kg / Wdh</th><th style="width:70px">Rep-Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
+    <tr><td>W1 S1</td><td><input type="date" id="w1s1_d"></td><td><input type="number" id="w1s1_k" placeholder="kg"></td><td><input type="text" id="w1s1_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s1_s" placeholder="#"></td><td><input type="text" id="w1s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s1_done" onclick="toggleDone('w1s1_done')">&#10003;</button></td></tr>
+    <tr><td>W1 S2</td><td><input type="date" id="w1s2_d"></td><td><input type="number" id="w1s2_k" placeholder="kg"></td><td><input type="text" id="w1s2_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s2_s" placeholder="#"></td><td><input type="text" id="w1s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s2_done" onclick="toggleDone('w1s2_done')">&#10003;</button></td></tr>
+    <tr><td>W1 S3</td><td><input type="date" id="w1s3_d"></td><td><input type="number" id="w1s3_k" placeholder="kg"></td><td><input type="text" id="w1s3_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s3_s" placeholder="#"></td><td><input type="text" id="w1s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s3_done" onclick="toggleDone('w1s3_done')">&#10003;</button></td></tr>
+    <tr><td>W2 S1</td><td><input type="date" id="w2s1_d"></td><td><input type="number" id="w2s1_k" placeholder="kg"></td><td><input type="text" id="w2s1_pu" placeholder="5kg/3"></td><td><input type="number" id="w2s1_s" placeholder="#"></td><td><input type="text" id="w2s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s1_done" onclick="toggleDone('w2s1_done')">&#10003;</button></td></tr>
+    <tr><td>W2 S2</td><td><input type="date" id="w2s2_d"></td><td><input type="number" id="w2s2_k" placeholder="kg"></td><td><input type="text" id="w2s2_pu" placeholder="5kg/3"></td><td><input type="number" id="w2s2_s" placeholder="#"></td><td><input type="text" id="w2s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s2_done" onclick="toggleDone('w2s2_done')">&#10003;</button></td></tr>
+    <tr><td>W2 S3</td><td><input type="date" id="w2s3_d"></td><td><input type="number" id="w2s3_k" placeholder="kg"></td><td><input type="text" id="w2s3_pu" placeholder="5kg/3"></td><td><input type="number" id="w2s3_s" placeholder="#"></td><td><input type="text" id="w2s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s3_done" onclick="toggleDone('w2s3_done')">&#10003;</button></td></tr>
   </table>
 </div>
 
@@ -118,8 +119,9 @@
   <h3>Woche 3-4 <span class="badge" style="background:#e05c1a">Aufbau</span></h3>
   <div class="progress"><div class="progress-bar" style="width:55%"></div></div>
   <div class="session">
-    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm</div>
-    <p>4 Saetze x 7 Sek. | Pause: <strong>3-4 Min.</strong> | <strong>+7 kg</strong> anstreben</p>
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm + Pull-ups</div>
+    <p>Max-Hang: 4 Saetze x 7 Sek. | Pause: <strong>3-4 Min.</strong> | <strong>+7 kg</strong> anstreben<br>
+    Pull-up 2RM: 4 Saetze x 2 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+8 kg</strong> Zusatz</p>
   </div>
   <div class="session">
     <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B - 7/3 Repeater</div>
@@ -130,13 +132,13 @@
     <p>Fingerstrecker 3x20 | Schulter 3x15 + Face Pulls 3x12 | Plank 4x30 Sek. | Leg Raises 3x10</p>
   </div>
   <table class="log-table" style="margin-top:14px;">
-    <tr><th style="width:70px">Session</th><th style="width:130px">Datum</th><th style="width:80px">Zusatz kg</th><th style="width:80px">Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
-    <tr><td>W3 S1</td><td><input type="date" id="w3s1_d"></td><td><input type="number" id="w3s1_k" placeholder="kg"></td><td><input type="number" id="w3s1_s" placeholder="#"></td><td><input type="text" id="w3s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s1_done" onclick="toggleDone('w3s1_done')">&#10003;</button></td></tr>
-    <tr><td>W3 S2</td><td><input type="date" id="w3s2_d"></td><td><input type="number" id="w3s2_k" placeholder="kg"></td><td><input type="number" id="w3s2_s" placeholder="#"></td><td><input type="text" id="w3s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s2_done" onclick="toggleDone('w3s2_done')">&#10003;</button></td></tr>
-    <tr><td>W3 S3</td><td><input type="date" id="w3s3_d"></td><td><input type="number" id="w3s3_k" placeholder="kg"></td><td><input type="number" id="w3s3_s" placeholder="#"></td><td><input type="text" id="w3s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s3_done" onclick="toggleDone('w3s3_done')">&#10003;</button></td></tr>
-    <tr><td>W4 S1</td><td><input type="date" id="w4s1_d"></td><td><input type="number" id="w4s1_k" placeholder="kg"></td><td><input type="number" id="w4s1_s" placeholder="#"></td><td><input type="text" id="w4s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s1_done" onclick="toggleDone('w4s1_done')">&#10003;</button></td></tr>
-    <tr><td>W4 S2</td><td><input type="date" id="w4s2_d"></td><td><input type="number" id="w4s2_k" placeholder="kg"></td><td><input type="number" id="w4s2_s" placeholder="#"></td><td><input type="text" id="w4s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s2_done" onclick="toggleDone('w4s2_done')">&#10003;</button></td></tr>
-    <tr><td>W4 S3</td><td><input type="date" id="w4s3_d"></td><td><input type="number" id="w4s3_k" placeholder="kg"></td><td><input type="number" id="w4s3_s" placeholder="#"></td><td><input type="text" id="w4s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s3_done" onclick="toggleDone('w4s3_done')">&#10003;</button></td></tr>
+    <tr><th style="width:60px">Session</th><th style="width:110px">Datum</th><th style="width:90px">Hang +kg</th><th style="width:90px">PU +kg / Wdh</th><th style="width:70px">Rep-Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
+    <tr><td>W3 S1</td><td><input type="date" id="w3s1_d"></td><td><input type="number" id="w3s1_k" placeholder="kg"></td><td><input type="text" id="w3s1_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s1_s" placeholder="#"></td><td><input type="text" id="w3s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s1_done" onclick="toggleDone('w3s1_done')">&#10003;</button></td></tr>
+    <tr><td>W3 S2</td><td><input type="date" id="w3s2_d"></td><td><input type="number" id="w3s2_k" placeholder="kg"></td><td><input type="text" id="w3s2_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s2_s" placeholder="#"></td><td><input type="text" id="w3s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s2_done" onclick="toggleDone('w3s2_done')">&#10003;</button></td></tr>
+    <tr><td>W3 S3</td><td><input type="date" id="w3s3_d"></td><td><input type="number" id="w3s3_k" placeholder="kg"></td><td><input type="text" id="w3s3_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s3_s" placeholder="#"></td><td><input type="text" id="w3s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s3_done" onclick="toggleDone('w3s3_done')">&#10003;</button></td></tr>
+    <tr><td>W4 S1</td><td><input type="date" id="w4s1_d"></td><td><input type="number" id="w4s1_k" placeholder="kg"></td><td><input type="text" id="w4s1_pu" placeholder="8kg/2"></td><td><input type="number" id="w4s1_s" placeholder="#"></td><td><input type="text" id="w4s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s1_done" onclick="toggleDone('w4s1_done')">&#10003;</button></td></tr>
+    <tr><td>W4 S2</td><td><input type="date" id="w4s2_d"></td><td><input type="number" id="w4s2_k" placeholder="kg"></td><td><input type="text" id="w4s2_pu" placeholder="8kg/2"></td><td><input type="number" id="w4s2_s" placeholder="#"></td><td><input type="text" id="w4s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s2_done" onclick="toggleDone('w4s2_done')">&#10003;</button></td></tr>
+    <tr><td>W4 S3</td><td><input type="date" id="w4s3_d"></td><td><input type="number" id="w4s3_k" placeholder="kg"></td><td><input type="text" id="w4s3_pu" placeholder="8kg/2"></td><td><input type="number" id="w4s3_s" placeholder="#"></td><td><input type="text" id="w4s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s3_done" onclick="toggleDone('w4s3_done')">&#10003;</button></td></tr>
   </table>
 </div>
 
@@ -144,8 +146,10 @@
   <h3>Woche 5-6 <span class="badge" style="background:#1a1a2e">Peak</span></h3>
   <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
   <div class="session">
-    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm</div>
-    <p>4-5 Saetze x 7 Sek. | Pause: <strong>4-5 Min.</strong> | W5: +7 kg → W6: +10 kg anstreben<br><strong>W6 letzte Session:</strong> Benchmark-Test!</p>
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm + Pull-ups</div>
+    <p>Max-Hang: 4-5 Saetze x 7 Sek. | Pause: <strong>4-5 Min.</strong> | W5: +7 kg → W6: +10 kg<br>
+    Pull-up 2RM: 4 Saetze x 2 Wdh. | Pause: <strong>3 Min.</strong> | W5: +10 kg → W6: +12 kg<br>
+    <strong>W6 letzte Session:</strong> Benchmark-Test Max-Hang + Pull-up 2RM!</p>
   </div>
   <div class="session">
     <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B - 7/3 Repeater auf 25mm</div>
@@ -156,13 +160,13 @@
     <p>Fingerstrecker 3x20 | Schulter 3x15 + Face Pulls | Plank 4x40 Sek. | Leg Raises 3x12 | Hollow Body 3x20 Sek.</p>
   </div>
   <table class="log-table" style="margin-top:14px;">
-    <tr><th style="width:70px">Session</th><th style="width:130px">Datum</th><th style="width:80px">Zusatz kg</th><th style="width:80px">Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
-    <tr><td>W5 S1</td><td><input type="date" id="w5s1_d"></td><td><input type="number" id="w5s1_k" placeholder="kg"></td><td><input type="number" id="w5s1_s" placeholder="#"></td><td><input type="text" id="w5s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s1_done" onclick="toggleDone('w5s1_done')">&#10003;</button></td></tr>
-    <tr><td>W5 S2</td><td><input type="date" id="w5s2_d"></td><td><input type="number" id="w5s2_k" placeholder="kg"></td><td><input type="number" id="w5s2_s" placeholder="#"></td><td><input type="text" id="w5s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s2_done" onclick="toggleDone('w5s2_done')">&#10003;</button></td></tr>
-    <tr><td>W5 S3</td><td><input type="date" id="w5s3_d"></td><td><input type="number" id="w5s3_k" placeholder="kg"></td><td><input type="number" id="w5s3_s" placeholder="#"></td><td><input type="text" id="w5s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s3_done" onclick="toggleDone('w5s3_done')">&#10003;</button></td></tr>
-    <tr><td>W6 S1</td><td><input type="date" id="w6s1_d"></td><td><input type="number" id="w6s1_k" placeholder="kg"></td><td><input type="number" id="w6s1_s" placeholder="#"></td><td><input type="text" id="w6s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w6s1_done" onclick="toggleDone('w6s1_done')">&#10003;</button></td></tr>
-    <tr><td>W6 S2</td><td><input type="date" id="w6s2_d"></td><td><input type="number" id="w6s2_k" placeholder="kg"></td><td><input type="number" id="w6s2_s" placeholder="#"></td><td><input type="text" id="w6s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w6s2_done" onclick="toggleDone('w6s2_done')">&#10003;</button></td></tr>
-    <tr><td>W6 S3 &#127942;</td><td><input type="date" id="w6s3_d"></td><td><input type="number" id="w6s3_k" placeholder="kg"></td><td><input type="number" id="w6s3_s" placeholder="#"></td><td><input type="text" id="w6s3_n" placeholder="Benchmark!"></td><td><button class="done-btn" id="w6s3_done" onclick="toggleDone('w6s3_done')">&#10003;</button></td></tr>
+    <tr><th style="width:60px">Session</th><th style="width:110px">Datum</th><th style="width:90px">Hang +kg</th><th style="width:90px">PU +kg / Wdh</th><th style="width:70px">Rep-Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
+    <tr><td>W5 S1</td><td><input type="date" id="w5s1_d"></td><td><input type="number" id="w5s1_k" placeholder="kg"></td><td><input type="text" id="w5s1_pu" placeholder="10kg/2"></td><td><input type="number" id="w5s1_s" placeholder="#"></td><td><input type="text" id="w5s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s1_done" onclick="toggleDone('w5s1_done')">&#10003;</button></td></tr>
+    <tr><td>W5 S2</td><td><input type="date" id="w5s2_d"></td><td><input type="number" id="w5s2_k" placeholder="kg"></td><td><input type="text" id="w5s2_pu" placeholder="10kg/2"></td><td><input type="number" id="w5s2_s" placeholder="#"></td><td><input type="text" id="w5s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s2_done" onclick="toggleDone('w5s2_done')">&#10003;</button></td></tr>
+    <tr><td>W5 S3</td><td><input type="date" id="w5s3_d"></td><td><input type="number" id="w5s3_k" placeholder="kg"></td><td><input type="text" id="w5s3_pu" placeholder="10kg/2"></td><td><input type="number" id="w5s3_s" placeholder="#"></td><td><input type="text" id="w5s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s3_done" onclick="toggleDone('w5s3_done')">&#10003;</button></td></tr>
+    <tr><td>W6 S1</td><td><input type="date" id="w6s1_d"></td><td><input type="number" id="w6s1_k" placeholder="kg"></td><td><input type="text" id="w6s1_pu" placeholder="12kg/2"></td><td><input type="number" id="w6s1_s" placeholder="#"></td><td><input type="text" id="w6s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w6s1_done" onclick="toggleDone('w6s1_done')">&#10003;</button></td></tr>
+    <tr><td>W6 S2</td><td><input type="date" id="w6s2_d"></td><td><input type="number" id="w6s2_k" placeholder="kg"></td><td><input type="text" id="w6s2_pu" placeholder="12kg/2"></td><td><input type="number" id="w6s2_s" placeholder="#"></td><td><input type="text" id="w6s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w6s2_done" onclick="toggleDone('w6s2_done')">&#10003;</button></td></tr>
+    <tr><td>W6 S3 &#127942;</td><td><input type="date" id="w6s3_d"></td><td><input type="number" id="w6s3_k" placeholder="kg"></td><td><input type="text" id="w6s3_pu" placeholder="Benchmark!"></td><td><input type="number" id="w6s3_s" placeholder="#"></td><td><input type="text" id="w6s3_n" placeholder="Benchmark!"></td><td><button class="done-btn" id="w6s3_done" onclick="toggleDone('w6s3_done')">&#10003;</button></td></tr>
   </table>
 </div>
 
@@ -173,16 +177,29 @@
   <h4>Max-Hang auf 20mm (7 Sek., Half-Crimp)</h4>
   <div class="bm-row">
     <span class="bm-label">Woche 1 - Zusatzgewicht (kg):</span>
-    <input class="field" id="bm_before" type="number" placeholder="z.B. 0" style="width:70px">
+    <input class="field" id="bm_before" type="number" placeholder="z.B. 5" style="width:70px">
     <span class="bm-result" id="bm_before_pct">-- % KG</span>
   </div>
   <div class="bm-row">
     <span class="bm-label">Woche 6 - Zusatzgewicht (kg):</span>
-    <input class="field" id="bm_after" type="number" placeholder="z.B. 8" style="width:70px">
+    <input class="field" id="bm_after" type="number" placeholder="z.B. 10" style="width:70px">
     <span class="bm-result" id="bm_after_pct">-- % KG</span>
     <span class="delta" id="bm_delta"></span>
   </div>
 </div>
+<div class="benchmark-card" style="margin-top:10px;">
+  <h4>&#128170; Pull-up 2RM</h4>
+  <div class="bm-row">
+    <span class="bm-label">Woche 1 - Zusatzgewicht (kg):</span>
+    <input class="field" id="bm_pu_before" type="number" placeholder="z.B. 5" style="width:70px">
+    <span class="bm-result" id="bm_pu_before_pct">-- % KG</span>
+  </div>
+  <div class="bm-row">
+    <span class="bm-label">Woche 6 - Zusatzgewicht (kg):</span>
+    <input class="field" id="bm_pu_after" type="number" placeholder="z.B. 12" style="width:70px">
+    <span class="bm-result" id="bm_pu_after_pct">-- % KG</span>
+    <span class="delta" id="bm_pu_delta"></span>
+  </div>
 <div class="benchmark-card" style="margin-top:10px;">
   <h4>Ausdauer-Repeater</h4>
   <div class="bm-row">
@@ -282,8 +299,18 @@ function updateBenchmark() {
   if (!isNaN(b) && !isNaN(a)) {
     var diff = a - b;
     var el = document.getElementById('bm_delta');
-    el.textContent = diff > 0 ? 'hoch +' + diff.toFixed(1) + ' kg' : diff < 0 ? 'runter ' + diff.toFixed(1) + ' kg' : '= gleichgeblieben';
+    el.textContent = diff > 0 ? '+' + diff.toFixed(1) + ' kg' : diff < 0 ? diff.toFixed(1) + ' kg' : '= gleichgeblieben';
     el.className = 'delta' + (diff < 0 ? ' neg' : '');
+  }
+  var pb = parseFloat(document.getElementById('bm_pu_before').value);
+  var pa = parseFloat(document.getElementById('bm_pu_after').value);
+  if (!isNaN(pb)) document.getElementById('bm_pu_before_pct').textContent = Math.round(((bw+pb)/bw)*100) + ' % KG';
+  if (!isNaN(pa)) document.getElementById('bm_pu_after_pct').textContent = Math.round(((bw+pa)/bw)*100) + ' % KG';
+  if (!isNaN(pb) && !isNaN(pa)) {
+    var pdiff = pa - pb;
+    var pel = document.getElementById('bm_pu_delta');
+    pel.textContent = pdiff > 0 ? '+' + pdiff.toFixed(1) + ' kg' : pdiff < 0 ? pdiff.toFixed(1) + ' kg' : '= gleichgeblieben';
+    pel.className = 'delta' + (pdiff < 0 ? ' neg' : '');
   }
 }
 document.addEventListener('input', function(){ updateCalc(); updateBenchmark(); save(); });
