@@ -2,319 +2,417 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>6-Wochen Hangboard Plan – Beastmaker 1000</title>
+<title>4-Wochen Hangboard Plan – Beastmaker 1000</title>
 <style>
-  body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 24px; color: #222; background: #fff; }
-  h1 { color: #1a1a2e; border-bottom: 3px solid #e05c1a; padding-bottom: 10px; }
-  h2 { color: #e05c1a; margin-top: 36px; }
-  h3 { color: #333; margin-top: 24px; }
-  .badge { display: inline-block; background: #e05c1a; color: white; border-radius: 4px; padding: 2px 10px; font-size: 0.85em; margin-left: 8px; vertical-align: middle; }
-  table { border-collapse: collapse; width: 100%; margin: 12px 0 24px 0; }
-  th { background: #1a1a2e; color: white; padding: 8px 12px; text-align: left; }
-  td { padding: 7px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: middle; }
-  tr:nth-child(even) { background: #f7f7f7; }
-  .week-block { border: 1px solid #ddd; border-radius: 8px; padding: 18px 22px; margin: 18px 0; background: #fafafa; }
-  .week-block h3 { margin-top: 0; }
-  .tip { background: #fff3e0; border-left: 4px solid #e05c1a; padding: 10px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
-  .session { margin: 10px 0; padding: 10px 16px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; }
-  .session-title { font-weight: bold; color: #1a1a2e; margin-bottom: 6px; }
-  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.78em; font-weight: bold; margin-right: 4px; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; max-width: 920px; margin: 40px auto; padding: 0 24px; color: #222; background: #fff; }
+  h1 { color: #1a1a2e; border-bottom: 3px solid #e05c1a; padding-bottom: 10px; font-size: 1.5em; }
+  h2 { color: #e05c1a; margin-top: 36px; font-size: 1.2em; }
+  h3 { color: #333; margin-top: 0; font-size: 1.05em; }
+  .badge { display: inline-block; background: #e05c1a; color: white; border-radius: 4px; padding: 2px 10px; font-size: 0.82em; margin-left: 8px; vertical-align: middle; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 18px 0; }
+  th { background: #1a1a2e; color: white; padding: 7px 10px; text-align: left; font-size: 0.88em; }
+  td { padding: 6px 10px; border-bottom: 1px solid #e8e8e8; font-size: 0.9em; vertical-align: middle; }
+  tr:nth-child(even) td { background: #f9f9f9; }
+  .week-block { border: 1px solid #ddd; border-radius: 8px; padding: 16px 20px; margin: 16px 0; background: #fafafa; }
+  .tip { background: #fff3e0; border-left: 4px solid #e05c1a; padding: 10px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 0.92em; }
+  .info { background: #e8f5e9; border-left: 4px solid #43a047; padding: 10px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 0.92em; }
+  .session { margin: 8px 0; padding: 10px 14px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; }
+  .session-title { font-weight: bold; color: #1a1a2e; margin-bottom: 5px; font-size: 0.93em; }
+  .tag { display: inline-block; padding: 2px 7px; border-radius: 12px; font-size: 0.75em; font-weight: bold; margin-right: 3px; }
   .tag-ausdauer { background: #e3f2fd; color: #1565c0; }
   .tag-kraft { background: #fce4ec; color: #c62828; }
   .tag-antag { background: #e8f5e9; color: #2e7d32; }
   .tag-core { background: #f3e5f5; color: #6a1b9a; }
-  .progress { background: #e0e0e0; border-radius: 4px; height: 8px; margin: 4px 0 10px 0; }
-  .progress-bar { background: #e05c1a; border-radius: 4px; height: 8px; }
-  footer { margin-top: 48px; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 16px; }
+  .progress { background: #e0e0e0; border-radius: 4px; height: 7px; margin: 4px 0 12px 0; }
+  .progress-bar { background: #e05c1a; border-radius: 4px; height: 7px; }
+  footer { margin-top: 48px; color: #999; font-size: 0.82em; border-top: 1px solid #eee; padding-top: 14px; }
   .field { border: none; border-bottom: 2px dashed #e05c1a; background: transparent; font-family: Arial, sans-serif; font-size: 0.95em; color: #1a1a2e; padding: 1px 4px; outline: none; text-align: center; }
   .field:focus { background: #fff8f0; border-bottom: 2px solid #e05c1a; border-radius: 3px 3px 0 0; }
   .field::placeholder { color: #bbb; font-style: italic; }
-  .log-table input { width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 3px 5px; font-size: 0.88em; text-align: center; box-sizing: border-box; }
+  .log-table input { width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 3px 5px; font-size: 0.85em; text-align: center; }
   .log-table input[type=text] { text-align: left; }
-  .log-table td { padding: 4px 6px; }
-  .done-btn { background: none; border: 2px solid #ccc; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 1em; line-height: 1; transition: all 0.2s; }
+  .log-table td { padding: 4px 5px; }
+  .done-btn { background: none; border: 2px solid #ccc; border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-size: 0.9em; line-height: 1; transition: all 0.2s; }
   .done-btn.done { background: #43a047; border-color: #43a047; color: white; }
-  .benchmark-card { background: #f0f4ff; border: 1px solid #c5cae9; border-radius: 8px; padding: 16px 20px; margin: 8px 0; }
-  .benchmark-card h4 { margin: 0 0 10px 0; color: #1a1a2e; }
+  .bm-card { background: #f0f4ff; border: 1px solid #c5cae9; border-radius: 8px; padding: 14px 18px; margin: 8px 0; }
+  .bm-card h4 { margin: 0 0 10px 0; color: #1a1a2e; font-size: 0.95em; }
   .bm-row { display: flex; align-items: center; gap: 10px; margin: 6px 0; flex-wrap: wrap; }
-  .bm-label { min-width: 200px; color: #555; font-size: 0.92em; }
-  .bm-result { font-weight: bold; color: #e05c1a; font-size: 0.95em; min-width: 80px; }
-  .delta { font-size: 0.88em; color: #43a047; }
+  .bm-label { min-width: 200px; color: #555; font-size: 0.9em; }
+  .bm-result { font-weight: bold; color: #e05c1a; font-size: 0.92em; min-width: 80px; }
+  .delta { font-size: 0.88em; color: #43a047; font-weight: bold; }
   .delta.neg { color: #e53935; }
-  .section-divider { border: none; border-top: 2px solid #eee; margin: 32px 0; }
-  #save-status { position: fixed; bottom: 18px; right: 24px; background: #43a047; color: white; padding: 7px 18px; border-radius: 20px; font-size: 0.85em; opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 999; }
+  .hr { border: none; border-top: 2px solid #eee; margin: 28px 0; }
+  #toast { position: fixed; bottom: 18px; right: 24px; background: #43a047; color: white; padding: 7px 18px; border-radius: 20px; font-size: 0.85em; opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 999; }
+  .reset-btn { font-size: 0.75em; color: #aaa; border: 1px solid #ddd; background: none; border-radius: 4px; padding: 2px 8px; cursor: pointer; margin-left: 10px; }
+  .reset-btn:hover { color: #e05c1a; border-color: #e05c1a; }
+  .flex-day { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .day-pill { padding: 4px 12px; border-radius: 20px; font-size: 0.82em; font-weight: bold; }
+  .day-train { background: #e8f5e9; color: #2e7d32; }
+  .day-rest { background: #f5f5f5; color: #999; }
+  .day-flex { background: #fff3e0; color: #e65100; }
 </style>
 </head>
 <body>
-<div id="save-status">&#10003; Gespeichert</div>
+<div id="toast">✓ Gespeichert</div>
 
-<h1>&#129495; 6-Wochen Hangboard Plan <span class="badge">Beastmaker 1000</span></h1>
-<p><strong>Niveau:</strong> 6b/c &nbsp;|&nbsp; <strong>Ziel:</strong> Fingerausdauer &amp; Grundkraft &nbsp;|&nbsp; <strong>Frequenz:</strong> 3x/Woche &nbsp;|&nbsp; <strong>Knieschonend</strong></p>
+<h1>🧗 4-Wochen Hangboard Plan <span class="badge">Beastmaker 1000</span>
+  <button class="reset-btn" onclick="resetAll()">↺ Zurücksetzen</button>
+</h1>
 
-<div class="tip">&#9889; <strong>Bevor du anfaengst:</strong> Trag unten dein Koerpergewicht und deinen Baseline Max-Hang ein. Alle Eingaben werden automatisch lokal gespeichert.</div>
+<p style="font-size:0.92em; color:#555;">
+  <strong>Niveau:</strong> 6b/c &nbsp;|&nbsp;
+  <strong>Fokus:</strong> Maximalkraft (20mm) + Aerobe Ausdauer (45mm) &nbsp;|&nbsp;
+  <strong>Frequenz:</strong> 3×/Woche flexibel &nbsp;|&nbsp;
+  <strong>Knieschonend</strong>
+</p>
 
-<div class="benchmark-card" style="background:#fff3e0; border-color:#ffe0b2;">
-  <h4>&#9881;&#65039; Deine Basis-Daten</h4>
+<div class="info">✅ <strong>Benchmark heute:</strong> Max-Hang <strong>+12 kg / 117%</strong> &nbsp;|&nbsp; Pull-up 2RM <strong>+12 kg / 117%</strong> &nbsp;|&nbsp; Repeater 10 Sätze / 1:30 &nbsp;|&nbsp; KG 72 kg &nbsp;|&nbsp; <strong>Ziel Woche 4: 121%</strong></div>
+
+<!-- BASISDATEN -->
+<div class="bm-card" style="background:#fff3e0; border-color:#ffe0b2;">
+  <h4>⚙️ Deine Basisdaten</h4>
   <div class="bm-row">
-    <span class="bm-label">Koerpergewicht (kg)</span>
-    <input class="field" id="bw" type="number" placeholder="z.B. 70" min="40" max="130" style="width:80px">
-    <span style="color:#888; font-size:0.9em">kg</span>
+    <span class="bm-label">Körpergewicht (kg)</span>
+    <input class="field" id="bw" type="number" placeholder="72" min="40" max="130" style="width:70px">
   </div>
   <div class="bm-row">
-    <span class="bm-label">Max-Hang Baseline (7s, 20mm)</span>
-    <input class="field" id="maxhang_base" type="number" placeholder="z.B. 5" min="-30" max="80" style="width:80px">
-    <span style="color:#888; font-size:0.9em">kg Zusatz (0 = nur Koerpergewicht)</span>
-    <span class="bm-result" id="maxhang_pct_base">-- % KG</span>
+    <span class="bm-label">Max-Hang Baseline (kg Zusatz)</span>
+    <input class="field" id="mh_base" type="number" placeholder="5" style="width:70px">
+    <span class="bm-result" id="mh_base_pct">-- % KG</span>
   </div>
-  <div class="bm-row" style="margin-top:6px;">
-    <span class="bm-label" style="color:#888; font-size:0.88em">60% Intensitaet (Ausdauer-Repeater)</span>
-    <span class="bm-result" id="intensity_60" style="font-size:0.9em; color:#1565c0;">--</span>
+  <div class="bm-row">
+    <span class="bm-label">Pull-up Baseline (kg Zusatz)</span>
+    <input class="field" id="pu_base" type="number" placeholder="5" style="width:70px">
+    <span class="bm-result" id="pu_base_pct">-- % KG</span>
+  </div>
+  <div class="bm-row">
+    <span class="bm-label">Repeater Baseline (Sätze / Pause)</span>
+    <input class="field" id="rep_base_sets" type="number" placeholder="10" style="width:55px"> Sätze &nbsp;
+    <input class="field" id="rep_base_pause" type="text" placeholder="1:30" style="width:55px"> Pause
   </div>
 </div>
 
-<hr class="section-divider">
+<div class="hr"></div>
 
-<h2>&#128203; Aufbau jeder Session</h2>
+<!-- SETUP -->
+<h2>📋 Aufbau jeder Session</h2>
 <table>
   <tr><th>Phase</th><th>Inhalt</th><th>Dauer</th></tr>
-  <tr><td>Aufwaermen</td><td>10 Min. allgemein + 2-3 lockere Haenge auf Jugs/50mm</td><td>15 Min.</td></tr>
-  <tr><td>Block A</td><td>Maximalkraft - Max-Hang auf 20mm</td><td>15 Min.</td></tr>
-  <tr><td>Pause</td><td>5 Min. Pause zwischen A und B</td><td>5 Min.</td></tr>
-  <tr><td>Block B</td><td>Ausdauer - Repeater auf 45mm (ab Woche 4: 25mm)</td><td>20-30 Min.</td></tr>
-  <tr><td>Block C</td><td>Antagonisten + Core</td><td>10-15 Min.</td></tr>
+  <tr><td>Aufwärmen</td><td>10 Min. allgemein + 2–3 lockere Hänge auf Jugs/50mm</td><td>15 Min.</td></tr>
+  <tr><td>Block A</td><td>Maximalkraft — Max-Hang 20mm + Pull-ups (nur wenn frisch)</td><td>15 Min.</td></tr>
+  <tr><td>Pause</td><td>5 Min. zwischen A und B</td><td>5 Min.</td></tr>
+  <tr><td>Block B</td><td>Aerobe Ausdauer — 7/3 Repeater auf 45mm</td><td>20–25 Min.</td></tr>
+  <tr><td>Block C</td><td>Antagonisten + Core</td><td>10 Min.</td></tr>
 </table>
-<div class="tip">&#128161; <strong>Reihenfolge einhalten:</strong> Kraft immer VOR Ausdauer. Nie zwei Sessions an aufeinanderfolgenden Tagen.</div>
 
-<hr class="section-divider">
-<h2>&#128200; Trainingslog</h2>
+<div class="tip">💡 <strong>Flexibel je nach Tagesform:</strong><br>
+  🟢 Finger frisch → Volle Session (A + B + C)<br>
+  🟡 Finger leicht müde → Nur B + C (kein Max-Hang)<br>
+  🔴 Finger müde → Nur C + Antagonisten, kein Hangboard
+</div>
 
+<!-- WOCHENPROGRAMM -->
+<h2>📅 Wochenprogramm</h2>
+<div class="flex-day">
+  <span class="day-pill day-train">Mo ✅</span>
+  <span class="day-pill day-rest">Di ❌</span>
+  <span class="day-pill day-train">Mi ✅</span>
+  <span class="day-pill day-rest">Do ❌</span>
+  <span class="day-pill day-flex">Fr ✅</span>
+  <span class="day-pill day-rest">Sa/So ❌</span>
+</div>
+<p style="font-size:0.88em; color:#777;">Mindestens 1 Ruhetag zwischen Sessions. Freitag: leichtere Session wenn Finger noch müde.</p>
+
+<div class="hr"></div>
+<h2>📈 4-Wochen Progression</h2>
+
+<!-- WOCHE 1 -->
 <div class="week-block">
-  <h3>Woche 1-2 <span class="badge" style="background:#555">Eingewoehnung</span></h3>
-  <div class="progress"><div class="progress-bar" style="width:25%"></div></div>
+  <h3>Woche 1 <span class="badge" style="background:#555">Einstieg</span></h3>
+  <div class="progress"><div class="progress-bar" style="width:20%"></div></div>
+
   <div class="session">
-    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm + Pull-ups</div>
-    <p>Max-Hang: 3 Saetze x 7 Sek. | Pause: <strong>3-5 Min.</strong> | Half-Crimp | <strong>+5 kg</strong><br>
-    Pull-up 2RM: 3 Saetze x 2–3 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+5 kg</strong> Zusatz</p>
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A — Max-Hang 20mm + Pull-ups</div>
+    <p style="font-size:0.9em; margin:4px 0;">
+      Max-Hang: 4 Sätze × 7 Sek. | Pause: <strong>4 Min.</strong> | <strong>+12 kg</strong> (Baseline)<br>
+      Pull-up: 3 Sätze × 2–3 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+5 kg</strong>
+    </p>
   </div>
   <div class="session">
-    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B - 7/3 Repeater auf 45mm</div>
-    <p>6 Saetze x 6 Wdh. | Pause: <strong>2 Min.</strong> | Bodyweight</p>
+    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B — 7/3 Repeater 45mm</div>
+    <p style="font-size:0.9em; margin:4px 0;">10 Sätze × 6 Wdh. | Pause: <strong>1:30 Min.</strong> | Bodyweight | Gefühl: platte Unterarme am Ende ✅</p>
   </div>
   <div class="session">
     <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
-    <p>Fingerstrecker 3x15 | Schulter 3x12 Aussenrotationen | Plank 3x30 Sek.</p>
+    <p style="font-size:0.9em; margin:4px 0;">Fingerstrecker 3×20 | Aussenrotation 3×15 | Face Pulls 3×12 | Plank 3×40 Sek. | Leg Raises 3×10</p>
   </div>
-  <table class="log-table" style="margin-top:14px;">
-    <tr><th style="width:60px">Session</th><th style="width:110px">Datum</th><th style="width:90px">Hang +kg</th><th style="width:90px">PU +kg / Wdh</th><th style="width:70px">Rep-Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
-    <tr><td>W1 S1</td><td><input type="date" id="w1s1_d"></td><td><input type="number" id="w1s1_k" placeholder="kg"></td><td><input type="text" id="w1s1_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s1_s" placeholder="#"></td><td><input type="text" id="w1s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s1_done" onclick="toggleDone('w1s1_done')">&#10003;</button></td></tr>
-    <tr><td>W1 S2</td><td><input type="date" id="w1s2_d"></td><td><input type="number" id="w1s2_k" placeholder="kg"></td><td><input type="text" id="w1s2_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s2_s" placeholder="#"></td><td><input type="text" id="w1s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s2_done" onclick="toggleDone('w1s2_done')">&#10003;</button></td></tr>
-    <tr><td>W1 S3</td><td><input type="date" id="w1s3_d"></td><td><input type="number" id="w1s3_k" placeholder="kg"></td><td><input type="text" id="w1s3_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s3_s" placeholder="#"></td><td><input type="text" id="w1s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s3_done" onclick="toggleDone('w1s3_done')">&#10003;</button></td></tr>
-    <tr><td>W2 S1</td><td><input type="date" id="w2s1_d"></td><td><input type="number" id="w2s1_k" placeholder="kg"></td><td><input type="text" id="w2s1_pu" placeholder="5kg/3"></td><td><input type="number" id="w2s1_s" placeholder="#"></td><td><input type="text" id="w2s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s1_done" onclick="toggleDone('w2s1_done')">&#10003;</button></td></tr>
-    <tr><td>W2 S2</td><td><input type="date" id="w2s2_d"></td><td><input type="number" id="w2s2_k" placeholder="kg"></td><td><input type="text" id="w2s2_pu" placeholder="5kg/3"></td><td><input type="number" id="w2s2_s" placeholder="#"></td><td><input type="text" id="w2s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s2_done" onclick="toggleDone('w2s2_done')">&#10003;</button></td></tr>
-    <tr><td>W2 S3</td><td><input type="date" id="w2s3_d"></td><td><input type="number" id="w2s3_k" placeholder="kg"></td><td><input type="text" id="w2s3_pu" placeholder="5kg/3"></td><td><input type="number" id="w2s3_s" placeholder="#"></td><td><input type="text" id="w2s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s3_done" onclick="toggleDone('w2s3_done')">&#10003;</button></td></tr>
+  <table class="log-table" style="margin-top:12px;">
+    <tr><th>Session</th><th>Datum</th><th>Hang +kg</th><th>PU +kg/Wdh</th><th>Rep-Sätze</th><th>Pause</th><th>Notiz</th><th>OK</th></tr>
+    <tr><td>W1 S1</td><td><input type="date" id="w1s1_d"></td><td><input type="number" id="w1s1_k" placeholder="kg"></td><td><input type="text" id="w1s1_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s1_s" placeholder="#"></td><td><input type="text" id="w1s1_p" placeholder="1:30"></td><td><input type="text" id="w1s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s1_done" onclick="toggleDone('w1s1_done')">✓</button></td></tr>
+    <tr><td>W1 S2</td><td><input type="date" id="w1s2_d"></td><td><input type="number" id="w1s2_k" placeholder="kg"></td><td><input type="text" id="w1s2_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s2_s" placeholder="#"></td><td><input type="text" id="w1s2_p" placeholder="1:30"></td><td><input type="text" id="w1s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s2_done" onclick="toggleDone('w1s2_done')">✓</button></td></tr>
+    <tr><td>W1 S3</td><td><input type="date" id="w1s3_d"></td><td><input type="number" id="w1s3_k" placeholder="kg"></td><td><input type="text" id="w1s3_pu" placeholder="5kg/3"></td><td><input type="number" id="w1s3_s" placeholder="#"></td><td><input type="text" id="w1s3_p" placeholder="1:30"></td><td><input type="text" id="w1s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w1s3_done" onclick="toggleDone('w1s3_done')">✓</button></td></tr>
   </table>
 </div>
 
+<!-- WOCHE 2 -->
 <div class="week-block">
-  <h3>Woche 3-4 <span class="badge" style="background:#e05c1a">Aufbau</span></h3>
-  <div class="progress"><div class="progress-bar" style="width:55%"></div></div>
+  <h3>Woche 2 <span class="badge" style="background:#e05c1a">Aufbau</span></h3>
+  <div class="progress"><div class="progress-bar" style="width:45%"></div></div>
+
   <div class="session">
-    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm + Pull-ups</div>
-    <p>Max-Hang: 4 Saetze x 7 Sek. | Pause: <strong>3-4 Min.</strong> | <strong>+7 kg</strong> anstreben<br>
-    Pull-up 2RM: 4 Saetze x 2 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+8 kg</strong> Zusatz</p>
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A — Max-Hang 20mm + Pull-ups</div>
+    <p style="font-size:0.9em; margin:4px 0;">
+      Max-Hang: 4 Sätze × 7 Sek. | Pause: <strong>4 Min.</strong> | <strong>+13 kg</strong><br>
+      Pull-up: 3 Sätze × 2 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+13 kg</strong>
+    </p>
   </div>
   <div class="session">
-    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B - 7/3 Repeater</div>
-    <p><strong>W3:</strong> 8 Saetze auf 45mm | Pause: <strong>90 Sek.</strong> &nbsp;|&nbsp; <strong>W4:</strong> Wechsel auf <strong>25mm</strong> | 6 Saetze | Pause: <strong>2 Min.</strong> (neue Leiste = mehr Pumpe!)</p>
+    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B — 7/3 Repeater 45mm</div>
+    <p style="font-size:0.9em; margin:4px 0;">11 Sätze × 6 Wdh. | Pause: <strong>1:30 Min.</strong> | Bodyweight</p>
   </div>
   <div class="session">
     <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
-    <p>Fingerstrecker 3x20 | Schulter 3x15 + Face Pulls 3x12 | Plank 4x30 Sek. | Leg Raises 3x10</p>
+    <p style="font-size:0.9em; margin:4px 0;">Fingerstrecker 3×20 | Aussenrotation 3×15 | Face Pulls 3×12 | Plank 4×40 Sek. | Leg Raises 3×12</p>
   </div>
-  <table class="log-table" style="margin-top:14px;">
-    <tr><th style="width:60px">Session</th><th style="width:110px">Datum</th><th style="width:90px">Hang +kg</th><th style="width:90px">PU +kg / Wdh</th><th style="width:70px">Rep-Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
-    <tr><td>W3 S1</td><td><input type="date" id="w3s1_d"></td><td><input type="number" id="w3s1_k" placeholder="kg"></td><td><input type="text" id="w3s1_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s1_s" placeholder="#"></td><td><input type="text" id="w3s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s1_done" onclick="toggleDone('w3s1_done')">&#10003;</button></td></tr>
-    <tr><td>W3 S2</td><td><input type="date" id="w3s2_d"></td><td><input type="number" id="w3s2_k" placeholder="kg"></td><td><input type="text" id="w3s2_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s2_s" placeholder="#"></td><td><input type="text" id="w3s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s2_done" onclick="toggleDone('w3s2_done')">&#10003;</button></td></tr>
-    <tr><td>W3 S3</td><td><input type="date" id="w3s3_d"></td><td><input type="number" id="w3s3_k" placeholder="kg"></td><td><input type="text" id="w3s3_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s3_s" placeholder="#"></td><td><input type="text" id="w3s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s3_done" onclick="toggleDone('w3s3_done')">&#10003;</button></td></tr>
-    <tr><td>W4 S1</td><td><input type="date" id="w4s1_d"></td><td><input type="number" id="w4s1_k" placeholder="kg"></td><td><input type="text" id="w4s1_pu" placeholder="8kg/2"></td><td><input type="number" id="w4s1_s" placeholder="#"></td><td><input type="text" id="w4s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s1_done" onclick="toggleDone('w4s1_done')">&#10003;</button></td></tr>
-    <tr><td>W4 S2</td><td><input type="date" id="w4s2_d"></td><td><input type="number" id="w4s2_k" placeholder="kg"></td><td><input type="text" id="w4s2_pu" placeholder="8kg/2"></td><td><input type="number" id="w4s2_s" placeholder="#"></td><td><input type="text" id="w4s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s2_done" onclick="toggleDone('w4s2_done')">&#10003;</button></td></tr>
-    <tr><td>W4 S3</td><td><input type="date" id="w4s3_d"></td><td><input type="number" id="w4s3_k" placeholder="kg"></td><td><input type="text" id="w4s3_pu" placeholder="8kg/2"></td><td><input type="number" id="w4s3_s" placeholder="#"></td><td><input type="text" id="w4s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s3_done" onclick="toggleDone('w4s3_done')">&#10003;</button></td></tr>
+  <table class="log-table" style="margin-top:12px;">
+    <tr><th>Session</th><th>Datum</th><th>Hang +kg</th><th>PU +kg/Wdh</th><th>Rep-Sätze</th><th>Pause</th><th>Notiz</th><th>OK</th></tr>
+    <tr><td>W2 S1</td><td><input type="date" id="w2s1_d"></td><td><input type="number" id="w2s1_k" placeholder="kg"></td><td><input type="text" id="w2s1_pu" placeholder="7kg/2"></td><td><input type="number" id="w2s1_s" placeholder="#"></td><td><input type="text" id="w2s1_p" placeholder="1:30"></td><td><input type="text" id="w2s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s1_done" onclick="toggleDone('w2s1_done')">✓</button></td></tr>
+    <tr><td>W2 S2</td><td><input type="date" id="w2s2_d"></td><td><input type="number" id="w2s2_k" placeholder="kg"></td><td><input type="text" id="w2s2_pu" placeholder="7kg/2"></td><td><input type="number" id="w2s2_s" placeholder="#"></td><td><input type="text" id="w2s2_p" placeholder="1:30"></td><td><input type="text" id="w2s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s2_done" onclick="toggleDone('w2s2_done')">✓</button></td></tr>
+    <tr><td>W2 S3</td><td><input type="date" id="w2s3_d"></td><td><input type="number" id="w2s3_k" placeholder="kg"></td><td><input type="text" id="w2s3_pu" placeholder="7kg/2"></td><td><input type="number" id="w2s3_s" placeholder="#"></td><td><input type="text" id="w2s3_p" placeholder="1:30"></td><td><input type="text" id="w2s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w2s3_done" onclick="toggleDone('w2s3_done')">✓</button></td></tr>
   </table>
 </div>
 
+<!-- WOCHE 3 -->
 <div class="week-block">
-  <h3>Woche 5-6 <span class="badge" style="background:#1a1a2e">Peak</span></h3>
-  <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+  <h3>Woche 3 <span class="badge" style="background:#1565c0">Intensität</span></h3>
+  <div class="progress"><div class="progress-bar" style="width:70%"></div></div>
+
   <div class="session">
-    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A - Max-Hang 20mm + Pull-ups</div>
-    <p>Max-Hang: 4-5 Saetze x 7 Sek. | Pause: <strong>4-5 Min.</strong> | W5: +7 kg → W6: +10 kg<br>
-    Pull-up 2RM: 4 Saetze x 2 Wdh. | Pause: <strong>3 Min.</strong> | W5: +10 kg → W6: +12 kg<br>
-    <strong>W6 letzte Session:</strong> Benchmark-Test Max-Hang + Pull-up 2RM!</p>
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A — Max-Hang 20mm + Pull-ups</div>
+    <p style="font-size:0.9em; margin:4px 0;">
+      Max-Hang: 5 Sätze × 7 Sek. | Pause: <strong>4–5 Min.</strong> | <strong>+14 kg</strong><br>
+      Pull-up: 4 Sätze × 2 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+14 kg</strong>
+    </p>
   </div>
   <div class="session">
-    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B - 7/3 Repeater auf 25mm</div>
-    <p>W5: 8 Saetze | Pause: <strong>90 Sek.</strong> &nbsp;|&nbsp; W6: 10 Saetze | Pause: <strong>60 Sek.</strong></p>
+    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B — 7/3 Repeater 45mm</div>
+    <p style="font-size:0.9em; margin:4px 0;">12 Sätze × 6 Wdh. | Pause: <strong>1:15 Min.</strong> | Bodyweight</p>
   </div>
   <div class="session">
     <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
-    <p>Fingerstrecker 3x20 | Schulter 3x15 + Face Pulls | Plank 4x40 Sek. | Leg Raises 3x12 | Hollow Body 3x20 Sek.</p>
+    <p style="font-size:0.9em; margin:4px 0;">Fingerstrecker 3×20 | Aussenrotation 3×15 | Face Pulls 3×15 | Plank 4×45 Sek. | Leg Raises 3×12 | Hollow Body 3×20 Sek.</p>
   </div>
-  <table class="log-table" style="margin-top:14px;">
-    <tr><th style="width:60px">Session</th><th style="width:110px">Datum</th><th style="width:90px">Hang +kg</th><th style="width:90px">PU +kg / Wdh</th><th style="width:70px">Rep-Saetze</th><th>Notiz</th><th style="width:36px">OK</th></tr>
-    <tr><td>W5 S1</td><td><input type="date" id="w5s1_d"></td><td><input type="number" id="w5s1_k" placeholder="kg"></td><td><input type="text" id="w5s1_pu" placeholder="10kg/2"></td><td><input type="number" id="w5s1_s" placeholder="#"></td><td><input type="text" id="w5s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s1_done" onclick="toggleDone('w5s1_done')">&#10003;</button></td></tr>
-    <tr><td>W5 S2</td><td><input type="date" id="w5s2_d"></td><td><input type="number" id="w5s2_k" placeholder="kg"></td><td><input type="text" id="w5s2_pu" placeholder="10kg/2"></td><td><input type="number" id="w5s2_s" placeholder="#"></td><td><input type="text" id="w5s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s2_done" onclick="toggleDone('w5s2_done')">&#10003;</button></td></tr>
-    <tr><td>W5 S3</td><td><input type="date" id="w5s3_d"></td><td><input type="number" id="w5s3_k" placeholder="kg"></td><td><input type="text" id="w5s3_pu" placeholder="10kg/2"></td><td><input type="number" id="w5s3_s" placeholder="#"></td><td><input type="text" id="w5s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w5s3_done" onclick="toggleDone('w5s3_done')">&#10003;</button></td></tr>
-    <tr><td>W6 S1</td><td><input type="date" id="w6s1_d"></td><td><input type="number" id="w6s1_k" placeholder="kg"></td><td><input type="text" id="w6s1_pu" placeholder="12kg/2"></td><td><input type="number" id="w6s1_s" placeholder="#"></td><td><input type="text" id="w6s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w6s1_done" onclick="toggleDone('w6s1_done')">&#10003;</button></td></tr>
-    <tr><td>W6 S2</td><td><input type="date" id="w6s2_d"></td><td><input type="number" id="w6s2_k" placeholder="kg"></td><td><input type="text" id="w6s2_pu" placeholder="12kg/2"></td><td><input type="number" id="w6s2_s" placeholder="#"></td><td><input type="text" id="w6s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w6s2_done" onclick="toggleDone('w6s2_done')">&#10003;</button></td></tr>
-    <tr><td>W6 S3 &#127942;</td><td><input type="date" id="w6s3_d"></td><td><input type="number" id="w6s3_k" placeholder="kg"></td><td><input type="text" id="w6s3_pu" placeholder="Benchmark!"></td><td><input type="number" id="w6s3_s" placeholder="#"></td><td><input type="text" id="w6s3_n" placeholder="Benchmark!"></td><td><button class="done-btn" id="w6s3_done" onclick="toggleDone('w6s3_done')">&#10003;</button></td></tr>
+  <table class="log-table" style="margin-top:12px;">
+    <tr><th>Session</th><th>Datum</th><th>Hang +kg</th><th>PU +kg/Wdh</th><th>Rep-Sätze</th><th>Pause</th><th>Notiz</th><th>OK</th></tr>
+    <tr><td>W3 S1</td><td><input type="date" id="w3s1_d"></td><td><input type="number" id="w3s1_k" placeholder="kg"></td><td><input type="text" id="w3s1_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s1_s" placeholder="#"></td><td><input type="text" id="w3s1_p" placeholder="1:15"></td><td><input type="text" id="w3s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s1_done" onclick="toggleDone('w3s1_done')">✓</button></td></tr>
+    <tr><td>W3 S2</td><td><input type="date" id="w3s2_d"></td><td><input type="number" id="w3s2_k" placeholder="kg"></td><td><input type="text" id="w3s2_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s2_s" placeholder="#"></td><td><input type="text" id="w3s2_p" placeholder="1:15"></td><td><input type="text" id="w3s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s2_done" onclick="toggleDone('w3s2_done')">✓</button></td></tr>
+    <tr><td>W3 S3</td><td><input type="date" id="w3s3_d"></td><td><input type="number" id="w3s3_k" placeholder="kg"></td><td><input type="text" id="w3s3_pu" placeholder="8kg/2"></td><td><input type="number" id="w3s3_s" placeholder="#"></td><td><input type="text" id="w3s3_p" placeholder="1:15"></td><td><input type="text" id="w3s3_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w3s3_done" onclick="toggleDone('w3s3_done')">✓</button></td></tr>
   </table>
 </div>
 
-<hr class="section-divider">
+<!-- WOCHE 4 -->
+<div class="week-block">
+  <h3>Woche 4 <span class="badge" style="background:#1a1a2e">Peak + Benchmark</span></h3>
+  <div class="progress"><div class="progress-bar" style="width:95%"></div></div>
 
-<h2>&#128202; Benchmark: Vorher vs. Nachher</h2>
-<div class="benchmark-card">
-  <h4>Max-Hang auf 20mm (7 Sek., Half-Crimp)</h4>
+  <div class="session">
+    <div class="session-title"><span class="tag tag-kraft">KRAFT</span> Block A — Max-Hang 20mm + Pull-ups</div>
+    <p style="font-size:0.9em; margin:4px 0;">
+      Max-Hang: 5 Sätze × 7 Sek. | Pause: <strong>5 Min.</strong> | <strong>+15–16 kg</strong> anstreben<br>
+      Pull-up: 4 Sätze × 2 Wdh. | Pause: <strong>3 Min.</strong> | <strong>+15–16 kg</strong><br>
+      <strong>🏆 Letzte Session W4: Benchmark-Test!</strong>
+    </p>
+  </div>
+  <div class="session">
+    <div class="session-title"><span class="tag tag-ausdauer">AUSDAUER</span> Block B — 7/3 Repeater 45mm</div>
+    <p style="font-size:0.9em; margin:4px 0;">12 Sätze × 6 Wdh. | Pause: <strong>60 Sek.</strong> | Bodyweight<br>
+    Wenn 12 × 60 Sek. easy → bereit für 20mm oder Zusatzgewicht!</p>
+  </div>
+  <div class="session">
+    <div class="session-title"><span class="tag tag-antag">ANTAG</span><span class="tag tag-core">CORE</span> Block C</div>
+    <p style="font-size:0.9em; margin:4px 0;">Fingerstrecker 3×20 | Aussenrotation 3×15 | Face Pulls 3×15 | Plank 4×50 Sek. | Leg Raises 3×15 | Hollow Body 3×25 Sek.</p>
+  </div>
+  <table class="log-table" style="margin-top:12px;">
+    <tr><th>Session</th><th>Datum</th><th>Hang +kg</th><th>PU +kg/Wdh</th><th>Rep-Sätze</th><th>Pause</th><th>Notiz</th><th>OK</th></tr>
+    <tr><td>W4 S1</td><td><input type="date" id="w4s1_d"></td><td><input type="number" id="w4s1_k" placeholder="kg"></td><td><input type="text" id="w4s1_pu" placeholder="10kg/2"></td><td><input type="number" id="w4s1_s" placeholder="#"></td><td><input type="text" id="w4s1_p" placeholder="1:00"></td><td><input type="text" id="w4s1_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s1_done" onclick="toggleDone('w4s1_done')">✓</button></td></tr>
+    <tr><td>W4 S2</td><td><input type="date" id="w4s2_d"></td><td><input type="number" id="w4s2_k" placeholder="kg"></td><td><input type="text" id="w4s2_pu" placeholder="10kg/2"></td><td><input type="number" id="w4s2_s" placeholder="#"></td><td><input type="text" id="w4s2_p" placeholder="1:00"></td><td><input type="text" id="w4s2_n" placeholder="Notiz..."></td><td><button class="done-btn" id="w4s2_done" onclick="toggleDone('w4s2_done')">✓</button></td></tr>
+    <tr><td>W4 S3 🏆</td><td><input type="date" id="w4s3_d"></td><td><input type="number" id="w4s3_k" placeholder="Benchmark!"></td><td><input type="text" id="w4s3_pu" placeholder="Benchmark!"></td><td><input type="number" id="w4s3_s" placeholder="#"></td><td><input type="text" id="w4s3_p" placeholder="60s"></td><td><input type="text" id="w4s3_n" placeholder="Benchmark-Ergebnisse!"></td><td><button class="done-btn" id="w4s3_done" onclick="toggleDone('w4s3_done')">✓</button></td></tr>
+  </table>
+</div>
+
+<!-- PROGRESSION -->
+<div class="hr"></div>
+<h2>🎯 Progressionsübersicht</h2>
+<table>
+  <tr><th>Woche</th><th>Max-Hang</th><th>Pull-up</th><th>Rep-Sätze</th><th>Rep-Pause</th></tr>
+  <tr><td>1</td><td>+12 kg / 4 Sätze</td><td>+12 kg / 3 Sätze</td><td>10</td><td>1:30</td></tr>
+  <tr><td>2</td><td>+13 kg / 4 Sätze</td><td>+13 kg / 3 Sätze</td><td>11</td><td>1:30</td></tr>
+  <tr><td>3</td><td>+14 kg / 5 Sätze</td><td>+14 kg / 4 Sätze</td><td>12</td><td>1:15</td></tr>
+  <tr><td>4</td><td>+15–16 kg / 5 Sätze</td><td>+15–16 kg / 4 Sätze</td><td>12</td><td>1:00</td></tr>
+</table>
+
+<!-- BENCHMARK -->
+<div class="hr"></div>
+<h2>📊 Benchmark Vorher vs. Nachher</h2>
+
+<div class="bm-card">
+  <h4>💪 Max-Hang 20mm (7 Sek., Half-Crimp)</h4>
   <div class="bm-row">
-    <span class="bm-label">Woche 1 - Zusatzgewicht (kg):</span>
-    <input class="field" id="bm_before" type="number" placeholder="z.B. 5" style="width:70px">
-    <span class="bm-result" id="bm_before_pct">-- % KG</span>
+    <span class="bm-label">Woche 1 — Zusatz (kg)</span>
+    <input class="field" id="bm_mh_pre" type="number" placeholder="5" style="width:65px">
+    <span class="bm-result" id="bm_mh_pre_pct">-- % KG</span>
   </div>
   <div class="bm-row">
-    <span class="bm-label">Woche 6 - Zusatzgewicht (kg):</span>
-    <input class="field" id="bm_after" type="number" placeholder="z.B. 10" style="width:70px">
-    <span class="bm-result" id="bm_after_pct">-- % KG</span>
-    <span class="delta" id="bm_delta"></span>
+    <span class="bm-label">Woche 4 — Zusatz (kg)</span>
+    <input class="field" id="bm_mh_post" type="number" placeholder="10" style="width:65px">
+    <span class="bm-result" id="bm_mh_post_pct">-- % KG</span>
+    <span class="delta" id="bm_mh_delta"></span>
   </div>
 </div>
-<div class="benchmark-card" style="margin-top:10px;">
-  <h4>&#128170; Pull-up 2RM</h4>
+
+<div class="bm-card" style="margin-top:8px;">
+  <h4>🏋️ Pull-up 2RM</h4>
   <div class="bm-row">
-    <span class="bm-label">Woche 1 - Zusatzgewicht (kg):</span>
-    <input class="field" id="bm_pu_before" type="number" placeholder="z.B. 5" style="width:70px">
-    <span class="bm-result" id="bm_pu_before_pct">-- % KG</span>
+    <span class="bm-label">Woche 1 — Zusatz (kg)</span>
+    <input class="field" id="bm_pu_pre" type="number" placeholder="5" style="width:65px">
+    <span class="bm-result" id="bm_pu_pre_pct">-- % KG</span>
   </div>
   <div class="bm-row">
-    <span class="bm-label">Woche 6 - Zusatzgewicht (kg):</span>
-    <input class="field" id="bm_pu_after" type="number" placeholder="z.B. 12" style="width:70px">
-    <span class="bm-result" id="bm_pu_after_pct">-- % KG</span>
+    <span class="bm-label">Woche 4 — Zusatz (kg)</span>
+    <input class="field" id="bm_pu_post" type="number" placeholder="10" style="width:65px">
+    <span class="bm-result" id="bm_pu_post_pct">-- % KG</span>
     <span class="delta" id="bm_pu_delta"></span>
   </div>
-<div class="benchmark-card" style="margin-top:10px;">
-  <h4>Ausdauer-Repeater</h4>
+</div>
+
+<div class="bm-card" style="margin-top:8px;">
+  <h4>⏱️ Repeater 45mm</h4>
   <div class="bm-row">
-    <span class="bm-label">45mm - max. Saetze (Woche 1-2):</span>
-    <input class="field" id="bm_45mm" type="number" placeholder="#" style="width:60px">
+    <span class="bm-label">Woche 1 — Sätze / Pause</span>
+    <input class="field" id="bm_rep_pre_s" type="number" placeholder="10" style="width:55px"> Sätze &nbsp;
+    <input class="field" id="bm_rep_pre_p" type="text" placeholder="1:30" style="width:55px"> Pause
   </div>
   <div class="bm-row">
-    <span class="bm-label">25mm - max. Saetze (Woche 6):</span>
-    <input class="field" id="bm_30mm" type="number" placeholder="#" style="width:60px">
-  </div>
-  <div class="bm-row">
-    <span class="bm-label">Notizen:</span>
-    <input class="field" id="bm_notes" type="text" placeholder="Wie fuehlst du dich?" style="width:320px; text-align:left;">
+    <span class="bm-label">Woche 4 — Sätze / Pause</span>
+    <input class="field" id="bm_rep_post_s" type="number" placeholder="12" style="width:55px"> Sätze &nbsp;
+    <input class="field" id="bm_rep_post_p" type="text" placeholder="1:00" style="width:55px"> Pause
+    <span class="delta" id="bm_rep_delta"></span>
   </div>
 </div>
 
-<hr class="section-divider">
-
-<h2>&#9888;&#65039; Wichtige Hinweise</h2>
-<ul>
-  <li><strong>Schmerz = Stop.</strong> Fingersehnenschmerz sofort abbrechen, 1 Woche Pause.</li>
-  <li><strong>Aufwaermen nie ueberspringen</strong> - kalte Sehnen sind verletzungsanfaellig.</li>
-  <li><strong>Half-Crimp</strong> ist die sicherste Griffposition - kein Full-Crimp ohne Eingewoehnung.</li>
-  <li><strong>Hydration:</strong> Sehnen brauchen viel Wasser - mindestens 2L taeglich.</li>
-  <li><strong>App-Tipp:</strong> Crimpd oder die offizielle Beastmaker App fuer Timing nutzen.</li>
+<!-- HINWEISE -->
+<div class="hr"></div>
+<h2>⚠️ Wichtige Hinweise</h2>
+<ul style="font-size:0.92em; line-height:1.8;">
+  <li><strong>Schmerz = Sofort Stop.</strong> Fingersehnenschmerz → 1 Woche Pause.</li>
+  <li><strong>Aufwärmen nie überspringen</strong> — kalte Sehnen sind verletzungsanfällig.</li>
+  <li><strong>Half-Crimp</strong> beim Max-Hang — kein Full-Crimp.</li>
+  <li><strong>Finger-Check vor jeder Session:</strong> Jugs hängen → frisch? → trainieren. Müde? → nur Ausdauer oder nur Antagonisten.</li>
+  <li><strong>Protein:</strong> 90–100 g/Tag. <strong>Kollagen + Vit. C</strong> vor dem Training.</li>
+  <li><strong>Hydration:</strong> mind. 2L Wasser täglich.</li>
+  <li><strong>App:</strong> Crimpd oder Beastmaker App für Timing.</li>
 </ul>
 
-<div style="text-align:center; margin:24px 0;">
-  <button onclick="clearAll()" style="background:none;border:1px solid #ccc;border-radius:6px;padding:6px 18px;color:#999;cursor:pointer;font-size:0.85em;">Alle Werte zuruecksetzen</button>
-</div>
-
 <footer>
-  Beastmaker 1000 | 6b/c | 3x/Woche | Knieschonend<br>
-  Alle Eingaben werden lokal in deinem Browser gespeichert (kein Server).
+  Beastmaker 1000 | 6b/c → Ziel 6c/7a | 3×/Woche flexibel | Knieschonend<br>
+  Alle Daten werden lokal im Browser gespeichert (localStorage).
 </footer>
 
 <script>
-var KEY = 'hb_plan_v1';
-function showSaved() {
-  var el = document.getElementById('save-status');
-  el.style.opacity = 1;
-  clearTimeout(el._t);
-  el._t = setTimeout(function(){ el.style.opacity = 0; }, 1500);
+const STORE = 'hb4w_v2';
+
+function getData() {
+  try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e) { return {}; }
 }
-function save() {
-  var data = {};
-  document.querySelectorAll('input[id]').forEach(function(el){ data[el.id] = el.value; });
-  document.querySelectorAll('.done-btn[id]').forEach(function(el){ data[el.id] = el.classList.contains('done'); });
-  localStorage.setItem(KEY, JSON.stringify(data));
-  showSaved();
+function save(data) {
+  localStorage.setItem(STORE, JSON.stringify(data));
+  const t = document.getElementById('toast');
+  t.style.opacity = 1;
+  setTimeout(() => t.style.opacity = 0, 1400);
 }
-function load() {
-  var raw = localStorage.getItem(KEY);
-  if (!raw) return;
-  var data;
-  try { data = JSON.parse(raw); } catch(e){ return; }
-  Object.keys(data).forEach(function(id){
-    var el = document.getElementById(id);
-    if (!el) return;
-    if (el.tagName === 'INPUT') el.value = data[id];
-    if (el.classList.contains('done-btn') && data[id] === true) el.classList.add('done');
-  });
-  updateCalc(); updateBenchmark();
+
+function autosave(el) {
+  const key = el.id;
+  if (!key) return;
+  const data = getData();
+  data[key] = el.type === 'checkbox' ? el.checked : el.value;
+  save(data);
+  updateCalc();
 }
+
 function toggleDone(id) {
-  document.getElementById(id).classList.toggle('done');
-  save();
+  const btn = document.getElementById(id);
+  btn.classList.toggle('done');
+  const data = getData();
+  data[id] = btn.classList.contains('done');
+  save(data);
 }
-function clearAll() {
-  if (!confirm('Wirklich alle Werte zuruecksetzen?')) return;
-  localStorage.removeItem(KEY);
-  document.querySelectorAll('input[id]').forEach(function(el){ el.value=''; });
-  document.querySelectorAll('.done-btn').forEach(function(b){ b.classList.remove('done'); });
-  document.getElementById('maxhang_pct_base').textContent = '-- % KG';
-  document.getElementById('intensity_60').textContent = '--';
-  document.getElementById('bm_before_pct').textContent = '-- % KG';
-  document.getElementById('bm_after_pct').textContent = '-- % KG';
-  document.getElementById('bm_delta').textContent = '';
+
+function pct(bw, extra) {
+  if (!bw || isNaN(extra)) return '--';
+  return Math.round(((bw + extra) / bw) * 100) + '% KG';
 }
+
 function updateCalc() {
-  var bw = parseFloat(document.getElementById('bw').value);
-  var extra = parseFloat(document.getElementById('maxhang_base').value) || 0;
-  if (!isNaN(bw) && bw > 0) {
-    var total = bw + extra;
-    document.getElementById('maxhang_pct_base').textContent = Math.round((total/bw)*100) + ' % KG';
-    var i60 = total * 0.6 - bw;
-    document.getElementById('intensity_60').textContent = (i60 >= 0 ? '+' : '') + i60.toFixed(1) + ' kg' + (i60 < 0 ? ' (Gegengewicht)' : '');
+  const bw = parseFloat(document.getElementById('bw').value) || 0;
+  const fields = [
+    ['mh_base', 'mh_base_pct'],
+    ['pu_base', 'pu_base_pct'],
+    ['bm_mh_pre', 'bm_mh_pre_pct'],
+    ['bm_mh_post', 'bm_mh_post_pct'],
+    ['bm_pu_pre', 'bm_pu_pre_pct'],
+    ['bm_pu_post', 'bm_pu_post_pct'],
+  ];
+  fields.forEach(([inp, out]) => {
+    const el = document.getElementById(inp);
+    const outEl = document.getElementById(out);
+    if (el && outEl) outEl.textContent = bw ? pct(bw, parseFloat(el.value)) : '--';
+  });
+
+  // Deltas
+  function delta(preId, postId, deltaId, unit) {
+    const pre = parseFloat(document.getElementById(preId)?.value);
+    const post = parseFloat(document.getElementById(postId)?.value);
+    const el = document.getElementById(deltaId);
+    if (!el) return;
+    if (!isNaN(pre) && !isNaN(post)) {
+      const d = post - pre;
+      el.textContent = (d >= 0 ? '+' : '') + d.toFixed(1) + unit;
+      el.className = 'delta' + (d < 0 ? ' neg' : '');
+    } else { el.textContent = ''; }
+  }
+  delta('bm_mh_pre', 'bm_mh_post', 'bm_mh_delta', ' kg');
+  delta('bm_pu_pre', 'bm_pu_post', 'bm_pu_delta', ' kg');
+  delta('bm_rep_pre_s', 'bm_rep_post_s', 'bm_rep_delta', ' Sätze');
+}
+
+function loadAll() {
+  const data = getData();
+  document.querySelectorAll('input[id], button[id]').forEach(el => {
+    if (!el.id) return;
+    if (el.tagName === 'BUTTON') {
+      if (data[el.id]) el.classList.add('done');
+    } else if (data[el.id] !== undefined) {
+      el.value = data[el.id];
+    }
+  });
+  updateCalc();
+}
+
+function resetAll() {
+  if (confirm('Alle Daten löschen?')) {
+    localStorage.removeItem(STORE);
+    location.reload();
   }
 }
-function updateBenchmark() {
-  var bw = parseFloat(document.getElementById('bw').value);
-  if (isNaN(bw) || bw <= 0) return;
-  var b = parseFloat(document.getElementById('bm_before').value);
-  var a = parseFloat(document.getElementById('bm_after').value);
-  if (!isNaN(b)) document.getElementById('bm_before_pct').textContent = Math.round(((bw+b)/bw)*100) + ' % KG';
-  if (!isNaN(a)) document.getElementById('bm_after_pct').textContent = Math.round(((bw+a)/bw)*100) + ' % KG';
-  if (!isNaN(b) && !isNaN(a)) {
-    var diff = a - b;
-    var el = document.getElementById('bm_delta');
-    el.textContent = diff > 0 ? '+' + diff.toFixed(1) + ' kg' : diff < 0 ? diff.toFixed(1) + ' kg' : '= gleichgeblieben';
-    el.className = 'delta' + (diff < 0 ? ' neg' : '');
-  }
-  var pb = parseFloat(document.getElementById('bm_pu_before').value);
-  var pa = parseFloat(document.getElementById('bm_pu_after').value);
-  if (!isNaN(pb)) document.getElementById('bm_pu_before_pct').textContent = Math.round(((bw+pb)/bw)*100) + ' % KG';
-  if (!isNaN(pa)) document.getElementById('bm_pu_after_pct').textContent = Math.round(((bw+pa)/bw)*100) + ' % KG';
-  if (!isNaN(pb) && !isNaN(pa)) {
-    var pdiff = pa - pb;
-    var pel = document.getElementById('bm_pu_delta');
-    pel.textContent = pdiff > 0 ? '+' + pdiff.toFixed(1) + ' kg' : pdiff < 0 ? pdiff.toFixed(1) + ' kg' : '= gleichgeblieben';
-    pel.className = 'delta' + (pdiff < 0 ? ' neg' : '');
-  }
-}
-document.addEventListener('input', function(){ updateCalc(); updateBenchmark(); save(); });
-window.addEventListener('load', load);
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadAll();
+  document.querySelectorAll('input[id]').forEach(el => {
+    el.addEventListener('input', () => autosave(el));
+  });
+});
 </script>
 </body>
 </html>
