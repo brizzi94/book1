@@ -62,13 +62,6 @@ LF = b"\x0A"
 EOT = b"\x04"
 ADDR = b"0000"
 
-UNIT_FACTORS = {
-    "OHM": 1.0,
-    "KOHM": 1_000.0,
-    "MOHM": 0.001,
-    "UOHM": 0.000_001,
-}
-
 
 # ---------------------------------------------------------
 # RESISTOMAT-Kommunikation (wie im bisherigen Skript)
@@ -95,14 +88,8 @@ def fetch_value(ser):
     return poll(ser)
 
 
-def parse_ohm(raw_value: str):
-    match = re.match(r"([-+]?\d*\.?\d+)\s*([A-Za-z]*)", raw_value)
-    if not match:
-        return None
-    number = float(match.group(1))
-    unit = match.group(2).upper()
-    factor = UNIT_FACTORS.get(unit, 1.0)
-    return number * factor
+def is_valid_measurement(raw_value: str) -> bool:
+    return re.match(r"([-+]?\d*\.?\d+)\s*([A-Za-z]*)", raw_value) is not None
 
 
 def ensure_excel_file(path: str):
@@ -114,12 +101,12 @@ def ensure_excel_file(path: str):
         wb = Workbook()
         ws = wb.active
         ws.title = "Messwerte"
-        ws.append(["Datum/Zeit", "Messwert (Ohm)"])
+        ws.append(["Datum/Zeit", "Messwert"])
     return wb, ws
 
 
-def append_measurement(wb, ws, path: str, value_ohm: float):
-    ws.append([datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), value_ohm])
+def append_measurement(wb, ws, path: str, raw_value: str):
+    ws.append([datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), raw_value])
     try:
         wb.save(path)
         return True
@@ -206,12 +193,11 @@ class ResistomatUI:
             messagebox.showwarning("Kein Wert", "Es liegt noch kein Messwert vor.")
             return
 
-        ohm_value = parse_ohm(self.current_raw_value)
-        if ohm_value is None:
+        if not is_valid_measurement(self.current_raw_value):
             messagebox.showwarning("Fehler", f"Konnte Wert nicht lesen: {self.current_raw_value}")
             return
 
-        saved = append_measurement(self.wb, self.ws, self.excel_path, ohm_value)
+        saved = append_measurement(self.wb, self.ws, self.excel_path, self.current_raw_value)
         if not saved:
             messagebox.showerror(
                 "Excel gesperrt",
@@ -220,7 +206,7 @@ class ResistomatUI:
             return
 
         self.count += 1
-        self.history_listbox.insert(0, f"#{self.count}: {ohm_value} Ohm")
+        self.history_listbox.insert(0, f"#{self.count}: {self.current_raw_value}")
         self.progress_label.config(text=f"Messung {self.count} / {self.target_count}")
 
         if self.count >= self.target_count:
