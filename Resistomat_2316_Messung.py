@@ -88,8 +88,13 @@ def fetch_value(ser):
     return poll(ser)
 
 
-def is_valid_measurement(raw_value: str) -> bool:
-    return re.match(r"([-+]?\d*\.?\d+)\s*([A-Za-z]*)", raw_value) is not None
+def split_value_unit(raw_value: str):
+    match = re.match(r"([-+]?\d*\.?\d+)\s*([A-Za-z]*)", raw_value)
+    if not match:
+        return None
+    number = float(match.group(1))
+    unit = match.group(2)
+    return number, unit
 
 
 def ensure_excel_file(path: str):
@@ -101,12 +106,12 @@ def ensure_excel_file(path: str):
         wb = Workbook()
         ws = wb.active
         ws.title = "Messwerte"
-        ws.append(["Datum/Zeit", "Messwert"])
+        ws.append(["Datum/Zeit", "Messwert", "Einheit"])
     return wb, ws
 
 
-def append_measurement(wb, ws, path: str, raw_value: str):
-    ws.append([datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), raw_value])
+def append_measurement(wb, ws, path: str, number: float, unit: str):
+    ws.append([datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), number, unit])
     try:
         wb.save(path)
         return True
@@ -193,11 +198,13 @@ class ResistomatUI:
             messagebox.showwarning("Kein Wert", "Es liegt noch kein Messwert vor.")
             return
 
-        if not is_valid_measurement(self.current_raw_value):
+        parsed = split_value_unit(self.current_raw_value)
+        if parsed is None:
             messagebox.showwarning("Fehler", f"Konnte Wert nicht lesen: {self.current_raw_value}")
             return
+        number, unit = parsed
 
-        saved = append_measurement(self.wb, self.ws, self.excel_path, self.current_raw_value)
+        saved = append_measurement(self.wb, self.ws, self.excel_path, number, unit)
         if not saved:
             messagebox.showerror(
                 "Excel gesperrt",
