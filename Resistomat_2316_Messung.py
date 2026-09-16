@@ -17,6 +17,7 @@ Vorher pruefen:
 - SERIAL_PORT und BAUDRATE unten anpassen
 """
 
+import json
 import re
 import time
 import datetime
@@ -33,11 +34,24 @@ SERIAL_PORT = "COM4"   # <-- anpassen
 BAUDRATE = 9600        # <-- muss mit Geraete-Einstellung uebereinstimmen
 POLL_INTERVAL = 0.3
 
-# Fester Speicherort fuer die Excel-Datei. Wenn gesetzt, wird der
-# Auswahldialog uebersprungen und immer dieselbe Datei verwendet
-# (neue Messungen werden angehaengt). Leer lassen ("") um bei jedem
-# Start wie bisher per Dialog einen Ort zu waehlen.
-EXCEL_PATH = r"C:\Messungen\resistomat_messwerte.xlsx"   # <-- anpassen, oder "" fuer Dialog
+# Merkt sich den zuletzt gewaehlten Speicherort, damit der Dialog beim
+# naechsten Start denselben Ordner/Dateinamen vorschlaegt.
+CONFIG_PATH = Path.home() / ".resistomat_2316_config.json"
+
+
+def load_last_excel_path():
+    try:
+        data = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+        return data.get("last_excel_path")
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return None
+
+
+def save_last_excel_path(path: str):
+    try:
+        CONFIG_PATH.write_text(json.dumps({"last_excel_path": path}), encoding="utf-8")
+    except OSError:
+        pass
 
 STX = b"\x02"
 ETX = b"\x03"
@@ -232,18 +246,24 @@ def main():
     if not target_count:
         return
 
-    if EXCEL_PATH:
-        excel_path = EXCEL_PATH
-        Path(excel_path).parent.mkdir(parents=True, exist_ok=True)
+    last_path = load_last_excel_path()
+    if last_path:
+        initialdir = str(Path(last_path).parent)
+        initialfile = Path(last_path).name
     else:
-        excel_path = filedialog.asksaveasfilename(
-            title="Excel-Datei waehlen/erstellen",
-            defaultextension=".xlsx",
-            filetypes=[("Excel-Datei", "*.xlsx")],
-            initialfile="resistomat_messwerte.xlsx",
-        )
-        if not excel_path:
-            return
+        initialdir = str(Path.home())
+        initialfile = "resistomat_messwerte.xlsx"
+
+    excel_path = filedialog.asksaveasfilename(
+        title="Excel-Datei waehlen/erstellen",
+        defaultextension=".xlsx",
+        filetypes=[("Excel-Datei", "*.xlsx")],
+        initialdir=initialdir,
+        initialfile=initialfile,
+    )
+    if not excel_path:
+        return
+    save_last_excel_path(excel_path)
 
     try:
         ser = serial.Serial(
