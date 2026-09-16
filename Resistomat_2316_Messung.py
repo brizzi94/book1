@@ -33,6 +33,12 @@ SERIAL_PORT = "COM4"   # <-- anpassen
 BAUDRATE = 9600        # <-- muss mit Geraete-Einstellung uebereinstimmen
 POLL_INTERVAL = 0.3
 
+# Fester Speicherort fuer die Excel-Datei. Wenn gesetzt, wird der
+# Auswahldialog uebersprungen und immer dieselbe Datei verwendet
+# (neue Messungen werden angehaengt). Leer lassen ("") um bei jedem
+# Start wie bisher per Dialog einen Ort zu waehlen.
+EXCEL_PATH = r"C:\Messungen\resistomat_messwerte.xlsx"   # <-- anpassen, oder "" fuer Dialog
+
 STX = b"\x02"
 ETX = b"\x03"
 ENQ = b"\x05"
@@ -226,14 +232,18 @@ def main():
     if not target_count:
         return
 
-    excel_path = filedialog.asksaveasfilename(
-        title="Excel-Datei waehlen/erstellen",
-        defaultextension=".xlsx",
-        filetypes=[("Excel-Datei", "*.xlsx")],
-        initialfile="resistomat_messwerte.xlsx",
-    )
-    if not excel_path:
-        return
+    if EXCEL_PATH:
+        excel_path = EXCEL_PATH
+        Path(excel_path).parent.mkdir(parents=True, exist_ok=True)
+    else:
+        excel_path = filedialog.asksaveasfilename(
+            title="Excel-Datei waehlen/erstellen",
+            defaultextension=".xlsx",
+            filetypes=[("Excel-Datei", "*.xlsx")],
+            initialfile="resistomat_messwerte.xlsx",
+        )
+        if not excel_path:
+            return
 
     try:
         ser = serial.Serial(
