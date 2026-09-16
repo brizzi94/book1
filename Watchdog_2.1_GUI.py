@@ -28,9 +28,6 @@ REKURSIV = False
 # Wie oft der Ordner abgefragt wird (Sekunden). Bei Netzlaufwerken reichen
 # 1-2 Sekunden; kleinere Werte erzeugen mehr Last auf dem Server.
 POLL_INTERVALL = 1.0
-
-# Wie viele Minuten das Aktivitäts-Diagramm rückwirkend anzeigt
-CHART_MINUTEN = 10
 # ============================================================
 
 try:
@@ -82,7 +79,6 @@ class WatchdogGUI:
         self.event_queue = event_queue
         self.observer = observer
         self.total_count = 0
-        self.minute_counts = {}  # "HH:MM" -> Anzahl neuer Dateien
 
         root.title("Watchdog 2.1 – Ordnerüberwachung")
         root.geometry("640x480")
@@ -99,10 +95,6 @@ class WatchdogGUI:
             fill="x", padx=10, pady=(2, 8)
         )
 
-        # Kleines Aktivitäts-Diagramm: Dateien pro Minute, letzte CHART_MINUTEN Minuten
-        self.canvas = tk.Canvas(root, height=120, bg="white", highlightthickness=1, highlightbackground="#ccc")
-        self.canvas.pack(fill="x", padx=10, pady=(0, 8))
-
         list_frame = ttk.Frame(root)
         list_frame.pack(fill="both", expand=True, padx=10, pady=(0, 10))
 
@@ -114,7 +106,6 @@ class WatchdogGUI:
         scrollbar.config(command=self.listbox.yview)
 
         self.poll_queue()
-        self.redraw_chart()
 
     def poll_queue(self):
         try:
@@ -129,40 +120,6 @@ class WatchdogGUI:
         self.total_count += 1
         self.status_var.set(f"{self.total_count} Dateien erkannt")
         self.listbox.insert(0, f"[{ts.strftime('%H:%M:%S')}] {path.name}")
-
-        minute_key = ts.strftime("%H:%M")
-        self.minute_counts[minute_key] = self.minute_counts.get(minute_key, 0) + 1
-
-    def redraw_chart(self):
-        self.canvas.delete("all")
-        width = self.canvas.winfo_width() or 600
-        height = int(self.canvas["height"])
-        margin_bottom = 20
-
-        now = datetime.now().timestamp()
-        buckets = []
-        for i in range(CHART_MINUTEN - 1, -1, -1):
-            key = datetime.fromtimestamp(now - i * 60).strftime("%H:%M")
-            buckets.append((key, self.minute_counts.get(key, 0)))
-
-        max_count = max((c for _, c in buckets), default=0) or 1
-        bar_width = width / len(buckets)
-
-        for idx, (key, count) in enumerate(buckets):
-            bar_height = (count / max_count) * (height - margin_bottom - 14)
-            x0 = idx * bar_width + 4
-            x1 = (idx + 1) * bar_width - 4
-            y1 = height - margin_bottom
-            y0 = y1 - bar_height
-            color = "#4a90d9" if count > 0 else "#e8e8e8"
-            self.canvas.create_rectangle(x0, y0, x1, y1, fill=color, outline="")
-            if count > 0:
-                self.canvas.create_text((x0 + x1) / 2, y0 - 8, text=str(count), font=("Segoe UI", 8))
-            self.canvas.create_text(
-                (x0 + x1) / 2, height - 8, text=key, font=("Segoe UI", 7), fill="#888"
-            )
-
-        self.root.after(1000, self.redraw_chart)
 
     def on_close(self):
         self.observer.stop()
