@@ -59,6 +59,35 @@ def load_last_excel_path():
     return load_config().get("last_excel_path")
 
 
+def resolve_initial_save_location(last_path: str, timeout: float = 1.0):
+    """Liefert (initialdir, initialfile) fuer den Speichern-Dialog.
+
+    Prueft in einem Hintergrund-Thread mit Timeout, ob der zuletzt
+    genutzte Ordner erreichbar ist (z.B. Netzlaufwerk getrennt), damit
+    ein nicht erreichbarer Pfad den Dialog nicht ewig haengen laesst.
+    """
+    default = (str(Path.home()), "resistomat_messwerte.xlsx")
+    if not last_path:
+        return default
+
+    result = {"exists": False}
+
+    def check():
+        try:
+            result["exists"] = Path(last_path).parent.is_dir()
+        except OSError:
+            result["exists"] = False
+
+    checker = threading.Thread(target=check, daemon=True)
+    checker.start()
+    checker.join(timeout)
+
+    if checker.is_alive() or not result["exists"]:
+        return default
+
+    return str(Path(last_path).parent), Path(last_path).name
+
+
 def save_last_excel_path(path: str):
     save_config_value("last_excel_path", path)
 
@@ -356,13 +385,7 @@ def main():
     if not target_count:
         return
 
-    last_path = load_last_excel_path()
-    if last_path:
-        initialdir = str(Path(last_path).parent)
-        initialfile = Path(last_path).name
-    else:
-        initialdir = str(Path.home())
-        initialfile = "resistomat_messwerte.xlsx"
+    initialdir, initialfile = resolve_initial_save_location(load_last_excel_path())
 
     excel_path = filedialog.asksaveasfilename(
         title="Excel-Datei waehlen/erstellen",
