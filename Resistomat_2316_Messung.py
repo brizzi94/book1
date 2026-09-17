@@ -14,7 +14,7 @@ Ablauf:
 Vorher pruefen:
 - pip install pyserial openpyxl
 - Am Geraet, Menue 150 (RS232): BLOCKCHECK muss auf OFF stehen
-- SERIAL_PORT und BAUDRATE unten anpassen
+- COM-Port wird beim Start im GUI ausgewaehlt, BAUDRATE unten anpassen
 """
 
 import json
@@ -24,34 +24,51 @@ import datetime
 import threading
 import queue
 import tkinter as tk
-from tkinter import simpledialog, filedialog, messagebox
+from tkinter import simpledialog, filedialog, messagebox, ttk
 
 import serial
+import serial.tools.list_ports
 from pathlib import Path
 from openpyxl import Workbook, load_workbook
 
-SERIAL_PORT = "COM4"   # <-- anpassen
 BAUDRATE = 9600        # <-- muss mit Geraete-Einstellung uebereinstimmen
 POLL_INTERVAL = 0.3
 
-# Merkt sich den zuletzt gewaehlten Speicherort, damit der Dialog beim
-# naechsten Start denselben Ordner/Dateinamen vorschlaegt.
+# Merkt sich den zuletzt gewaehlten Speicherort/COM-Port, damit die
+# Dialoge beim naechsten Start dieselben Werte vorschlagen.
 CONFIG_PATH = Path.home() / ".resistomat_2316_config.json"
 
 
-def load_last_excel_path():
+def load_config():
     try:
-        data = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-        return data.get("last_excel_path")
+        return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     except (FileNotFoundError, json.JSONDecodeError, OSError):
-        return None
+        return {}
+
+
+def save_config_value(key: str, value: str):
+    data = load_config()
+    data[key] = value
+    try:
+        CONFIG_PATH.write_text(json.dumps(data), encoding="utf-8")
+    except OSError:
+        pass
+
+
+def load_last_excel_path():
+    return load_config().get("last_excel_path")
 
 
 def save_last_excel_path(path: str):
-    try:
-        CONFIG_PATH.write_text(json.dumps({"last_excel_path": path}), encoding="utf-8")
-    except OSError:
-        pass
+    save_config_value("last_excel_path", path)
+
+
+def load_last_com_port():
+    return load_config().get("last_com_port")
+
+
+def save_last_com_port(port: str):
+    save_config_value("last_com_port", port)
 
 STX = b"\x02"
 ETX = b"\x03"
@@ -88,6 +105,44 @@ def fetch_value(ser):
     return poll(ser)
 
 
+def ask_com_port(root, default_port=None):
+    available = [p.device for p in serial.tools.list_ports.comports()]
+
+    dialog = tk.Toplevel(root)
+    dialog.title("COM-Port waehlen")
+    dialog.geometry("300x150")
+    dialog.resizable(False, False)
+    dialog.transient(root)
+    dialog.grab_set()
+
+    tk.Label(dialog, text="Serieller Port (COM):", font=("Segoe UI", 11)).pack(pady=(15, 5))
+
+    initial = default_port or (available[0] if available else "COM1")
+    port_var = tk.StringVar(value=initial)
+    combo = ttk.Combobox(dialog, textvariable=port_var, values=available, width=20)
+    combo.pack(pady=5)
+    combo.focus_set()
+
+    result = {"port": None}
+
+    def on_ok():
+        result["port"] = port_var.get().strip()
+        dialog.destroy()
+
+    def on_cancel():
+        dialog.destroy()
+
+    button_frame = tk.Frame(dialog)
+    button_frame.pack(pady=15)
+    tk.Button(button_frame, text="Verbinden", command=on_ok, width=10).pack(side="left", padx=5)
+    tk.Button(button_frame, text="Abbrechen", command=on_cancel, width=10).pack(side="left", padx=5)
+
+    dialog.bind("<Return>", lambda event: on_ok())
+    dialog.protocol("WM_DELETE_WINDOW", on_cancel)
+    dialog.wait_window()
+    return result["port"] or None
+
+
 def split_value_unit(raw_value: str):
     match = re.match(r"([-+]?\d*\.?\d+)\s*([A-Za-z]*)", raw_value)
     if not match:
@@ -111,12 +166,15 @@ def ensure_excel_file(path: str):
 
 
 def append_measurement(wb, ws, path: str, number: float, unit: str):
+    """Haengt eine Messung an und gibt die Zeilennummer zurueck, oder
+    None wenn das Speichern fehlschlug (z.B. Datei in Excel geoeffnet)."""
     ws.append([datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), number, unit])
     try:
         wb.save(path)
-        return True
+        return ws.max_row
     except PermissionError:
-        return False
+        ws.delete_rows(ws.max_row)
+        return None
 
 
 # ---------------------------------------------------------
@@ -141,6 +199,8 @@ class ResistomatUI:
         self.target_count = target_count
         self.count = 0
         self.current_raw_value = None
+        self.history_rows = []   # Excel-Zeilennummern, Index 0 = neuester Eintrag
+        self.history_raw = []    # Rohwerte (Text), gleiche Reihenfolge wie history_rows
 
         self.wb, self.ws = ensure_excel_file(excel_path)
 
@@ -158,7 +218,7 @@ class ResistomatUI:
 
     def build_ui(self):
         self.root.title("RESISTOMAT 2316 - Messung")
-        self.root.geometry("420x320")
+        self.root.geometry("420x380")
 
         tk.Label(self.root, text="Aktueller Messwert:", font=("Segoe UI", 12)).pack(pady=(20, 0))
         self.value_label = tk.Label(self.root, text="--", font=("Segoe UI", 28, "bold"))
@@ -173,9 +233,16 @@ class ResistomatUI:
         )
         self.confirm_button.pack(pady=10)
 
-        tk.Label(self.root, text="Letzte Eintraege:", font=("Segoe UI", 10)).pack(pady=(10, 0))
+        tk.Label(self.root, text="Letzte Eintraege (Doppelklick zum Bearbeiten):", font=("Segoe UI", 10)).pack(pady=(10, 0))
         self.history_listbox = tk.Listbox(self.root, height=8, font=("Consolas", 10))
-        self.history_listbox.pack(fill="both", expand=True, padx=20, pady=(0, 20))
+        self.history_listbox.pack(fill="both", expand=True, padx=20, pady=(0, 5))
+        self.history_listbox.bind("<Double-Button-1>", lambda event: self.edit_selected_measurement())
+
+        self.edit_button = tk.Button(
+            self.root, text="Ausgewaehlten Wert bearbeiten", font=("Segoe UI", 10),
+            command=self.edit_selected_measurement
+        )
+        self.edit_button.pack(pady=(0, 15))
 
         self.root.bind("<Return>", lambda event: self.confirm_measurement())
 
@@ -204,8 +271,8 @@ class ResistomatUI:
             return
         number, unit = parsed
 
-        saved = append_measurement(self.wb, self.ws, self.excel_path, number, unit)
-        if not saved:
+        row = append_measurement(self.wb, self.ws, self.excel_path, number, unit)
+        if row is None:
             messagebox.showerror(
                 "Excel gesperrt",
                 "Die Excel-Datei ist gerade geoeffnet (z.B. in Excel).\nBitte schliessen und erneut bestaetigen."
@@ -213,6 +280,8 @@ class ResistomatUI:
             return
 
         self.count += 1
+        self.history_rows.insert(0, row)
+        self.history_raw.insert(0, self.current_raw_value)
         self.history_listbox.insert(0, f"#{self.count}: {self.current_raw_value}")
         self.progress_label.config(text=f"Messung {self.count} / {self.target_count}")
 
@@ -221,6 +290,48 @@ class ResistomatUI:
             self.value_label.config(text="Fertig")
             messagebox.showinfo("Fertig", f"Alle {self.target_count} Messungen erfasst.")
             self.stop_event.set()
+
+    def edit_selected_measurement(self):
+        selection = self.history_listbox.curselection()
+        if not selection:
+            messagebox.showinfo("Keine Auswahl", "Bitte zuerst einen Eintrag in der Liste auswaehlen.")
+            return
+        index = selection[0]
+
+        new_raw = simpledialog.askstring(
+            "Wert bearbeiten",
+            "Neuer Messwert (z.B. 12.34 mOhm):",
+            initialvalue=self.history_raw[index],
+            parent=self.root,
+        )
+        if not new_raw:
+            return
+
+        parsed = split_value_unit(new_raw)
+        if parsed is None:
+            messagebox.showwarning("Fehler", f"Konnte Wert nicht lesen: {new_raw}")
+            return
+        number, unit = parsed
+
+        row = self.history_rows[index]
+        old_number, old_unit = self.ws.cell(row=row, column=2).value, self.ws.cell(row=row, column=3).value
+        self.ws.cell(row=row, column=2, value=number)
+        self.ws.cell(row=row, column=3, value=unit)
+        try:
+            self.wb.save(self.excel_path)
+        except PermissionError:
+            self.ws.cell(row=row, column=2, value=old_number)
+            self.ws.cell(row=row, column=3, value=old_unit)
+            messagebox.showerror(
+                "Excel gesperrt",
+                "Die Excel-Datei ist gerade geoeffnet (z.B. in Excel).\nBitte schliessen und erneut versuchen."
+            )
+            return
+
+        self.history_raw[index] = new_raw
+        display_count = self.count - index
+        self.history_listbox.delete(index)
+        self.history_listbox.insert(index, f"#{display_count}: {new_raw}")
 
     def on_close(self):
         self.stop_event.set()
@@ -258,23 +369,33 @@ def main():
         return
     save_last_excel_path(excel_path)
 
-    try:
-        ser = serial.Serial(
-            port=SERIAL_PORT,
-            baudrate=BAUDRATE,
-            bytesize=serial.EIGHTBITS,
-            parity=serial.PARITY_NONE,
-            stopbits=serial.STOPBITS_ONE,
-            timeout=5,
-        )
-    except serial.SerialException as e:
-        messagebox.showerror("Verbindungsfehler", f"Konnte {SERIAL_PORT} nicht oeffnen:\n{e}")
-        return
+    last_port = load_last_com_port()
+    ser = None
+    while ser is None:
+        com_port = ask_com_port(root, last_port)
+        if not com_port:
+            return
+        last_port = com_port
 
-    if not send(ser, "*idn?") or poll(ser) is None:
-        messagebox.showerror("Geraetefehler", "Geraet antwortet nicht auf *idn? - Verbindung pruefen.")
-        ser.close()
-        return
+        try:
+            ser = serial.Serial(
+                port=com_port,
+                baudrate=BAUDRATE,
+                bytesize=serial.EIGHTBITS,
+                parity=serial.PARITY_NONE,
+                stopbits=serial.STOPBITS_ONE,
+                timeout=5,
+            )
+        except serial.SerialException as e:
+            messagebox.showerror("Verbindungsfehler", f"Konnte {com_port} nicht oeffnen:\n{e}")
+            continue
+
+        if not send(ser, "*idn?") or poll(ser) is None:
+            messagebox.showerror("Geraetefehler", "Geraet antwortet nicht auf *idn? - Verbindung pruefen.")
+            ser.close()
+            ser = None
+
+    save_last_com_port(com_port)
 
     root.deiconify()
     app = ResistomatUI(root, ser, excel_path, target_count)
