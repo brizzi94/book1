@@ -113,6 +113,9 @@ def ask_com_port(root, default_port=None):
     dialog.geometry("300x150")
     dialog.resizable(False, False)
     dialog.transient(root)
+    dialog.attributes("-topmost", True)
+    dialog.lift()
+    dialog.focus_force()
     dialog.grab_set()
 
     tk.Label(dialog, text="Serieller Port (COM):", font=("Segoe UI", 11)).pack(pady=(15, 5))
@@ -342,10 +345,13 @@ class ResistomatUI:
 def main():
     root = tk.Tk()
     root.withdraw()
+    # Verhindert, dass Dialoge bei verstecktem Hauptfenster hinter
+    # anderen Fenstern (z.B. dem Terminal) landen.
+    root.attributes("-topmost", True)
 
     target_count = simpledialog.askinteger(
         "Anzahl Messungen", "Wie viele Messungen sollen erfasst werden?",
-        minvalue=1, initialvalue=30
+        minvalue=1, initialvalue=30, parent=root
     )
     if not target_count:
         return
@@ -364,6 +370,7 @@ def main():
         filetypes=[("Excel-Datei", "*.xlsx")],
         initialdir=initialdir,
         initialfile=initialfile,
+        parent=root,
     )
     if not excel_path:
         return
@@ -397,6 +404,7 @@ def main():
 
     save_last_com_port(com_port)
 
+    root.attributes("-topmost", False)
     root.deiconify()
     app = ResistomatUI(root, ser, excel_path, target_count)
     root.protocol("WM_DELETE_WINDOW", app.on_close)
