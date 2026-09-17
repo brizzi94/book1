@@ -134,18 +134,30 @@ def fetch_value(ser):
     return poll(ser)
 
 
+def list_available_ports(timeout: float = 2.0):
+    """Ermittelt verfuegbare COM-Ports mit Timeout, damit ein
+    haengender Treiber/WMI-Aufruf den Dialog nicht blockiert."""
+    result = {"ports": []}
+
+    def scan():
+        try:
+            result["ports"] = [p.device for p in serial.tools.list_ports.comports()]
+        except Exception:
+            result["ports"] = []
+
+    scanner = threading.Thread(target=scan, daemon=True)
+    scanner.start()
+    scanner.join(timeout)
+    return result["ports"]
+
+
 def ask_com_port(root, default_port=None):
-    available = [p.device for p in serial.tools.list_ports.comports()]
+    available = list_available_ports()
 
     dialog = tk.Toplevel(root)
     dialog.title("COM-Port waehlen")
     dialog.geometry("300x150")
     dialog.resizable(False, False)
-    dialog.transient(root)
-    dialog.attributes("-topmost", True)
-    dialog.lift()
-    dialog.focus_force()
-    dialog.grab_set()
 
     tk.Label(dialog, text="Serieller Port (COM):", font=("Segoe UI", 11)).pack(pady=(15, 5))
 
@@ -171,6 +183,15 @@ def ask_com_port(root, default_port=None):
 
     dialog.bind("<Return>", lambda event: on_ok())
     dialog.protocol("WM_DELETE_WINDOW", on_cancel)
+
+    dialog.update_idletasks()
+    dialog.deiconify()
+    dialog.lift()
+    dialog.attributes("-topmost", True)
+    dialog.after(200, lambda: dialog.attributes("-topmost", False))
+    dialog.focus_force()
+    dialog.grab_set()
+
     dialog.wait_window()
     return result["port"] or None
 
